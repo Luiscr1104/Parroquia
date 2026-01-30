@@ -1,0 +1,122 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ArtisanalIcon from "../../components/ArtisanalIcon.astro";
+import { ChevronRight } from "lucide-astro";
+import SectionHeader from "../../components/SectionHeader.astro";
+
+const news = [
+    {
+        title: "Fiestas Patronales Peñas Blancas 2026",
+        date: "15 Feb, 2026",
+        category: "Eventos",
+        excerpt:
+            "Estamos a las puertas de celebrar nuestras fiestas en honor al Sagrado Corazón. Conozca el calendario de actividades religiosas y culturales...",
+        image: "https://images.unsplash.com/photo-1438032005730-c779502df39b?q=80&w=800",
+    },
+    {
+        title: "Nueva Catequesis para Adultos",
+        date: "10 Feb, 2026",
+        category: "Formación",
+        excerpt:
+            "Iniciamos un nuevo proceso de formación para adultos que deseen completar sus sacramentos o profundizar en su fe. Inscripciones abiertas...",
+        image: "https://images.unsplash.com/photo-1544427920-c49ccfb85579?q=80&w=800",
+    },
+    {
+        title: "Campaña de Ayuda Social: Cuaresma",
+        date: "01 Feb, 2026",
+        category: "Social",
+        excerpt:
+            "Este tiempo de Cuaresma nos invita a la caridad. Estaremos recolectando alimentos no perecederos para las familias más necesitadas de nuestra parroquia...",
+        image: "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?q=80&w=800",
+    },
+];
+---
+
+<Layout
+    title="Noticias y Anuncios"
+    description="Manténgase informado sobre las actividades, fiestas patronales y avisos de nuestra parroquia."
+>
+    <section class="py-24 bg-parchment overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <SectionHeader
+                tag="Actualidad Parroquial"
+                title="Noticias y Avisos"
+            />
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                {
+                    news.map((item) => (
+                        <article class="bg-parchment-dark rounded-3xl overflow-hidden sacred-border flex flex-col group hover:shadow-2xl transition-all duration-500">
+                            <div class="h-64 overflow-hidden relative">
+                                <img
+                                    src={item.image}
+                                    alt={item.title}
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                />
+                                <div class="absolute top-4 right-4 bg-gold px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest text-parchment">
+                                    {item.category}
+                                </div>
+                            </div>
+                            <div class="p-8 flex-grow space-y-4">
+                                <div class="flex items-center text-deep-blue/40 text-xs font-bold space-x-2">
+                                    <ArtisanalIcon
+                                        name="calendar-blank"
+                                        size={14}
+                                    />
+                                    <span>{item.date}</span>
+                                </div>
+                                <h3 class="text-2xl font-display font-bold text-deep-blue group-hover:text-gold-dark transition-colors">
+                                    {item.title}
+                                </h3>
+                                <p class="text-sm text-deep-blue/60 leading-relaxed line-clamp-3 italic">
+                                    {item.excerpt}
+                                </p>
+                                <div class="pt-4 flex items-center text-gold-dark font-bold text-sm">
+                                    <span>Leer noticia completa</span>
+                                    <ChevronRight
+                                        size={16}
+                                        class="ml-1 group-hover:translate-x-1 transition-transform"
+                                    />
+                                </div>
+                            </div>
+                        </article>
+                    ))
+                }
+            </div>
+
+            <!-- newsletter / subscribe callout -->
+            <div
+                class="mt-24 p-12 bg-deep-blue rounded-[3rem] text-center relative overflow-hidden"
+            >
+                <div
+                    class="absolute inset-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1548625361-195fe5795df5?q=80&w=1200')] bg-cover"
+                >
+                </div>
+                <div class="relative z-10">
+                    <h2
+                        class="text-3xl md:text-4xl font-display font-bold text-gold mb-6"
+                    >
+                        ¿Desea recibir avisos en su correo?
+                    </h2>
+                    <p class="text-parchment/60 max-w-xl mx-auto mb-10">
+                        Suscríbase a nuestro boletín semanal para no perderse
+                        ninguna actividad de nuestra comunidad.
+                    </p>
+                    <div
+                        class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto"
+                    >
+                        <input
+                            type="email"
+                            placeholder="Su correo electrónico"
+                            class="flex-grow px-6 py-4 rounded-xl bg-parchment/5 border border-parchment/10 text-parchment focus:outline-none focus:border-gold transition-colors"
+                        />
+                        <button
+                            class="px-8 py-4 bg-gold hover:bg-gold-dark text-parchment font-bold rounded-xl transition-colors"
+                            >Suscribirse</button
+                        >
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</Layout>

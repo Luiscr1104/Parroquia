@@ -1,0 +1,255 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ArtisanalIcon from "../../components/ArtisanalIcon.astro";
+import SectionHeader from "../../components/SectionHeader.astro";
+
+export function getStaticPaths() {
+    const filiales = [
+        {
+            slug: "penas-blancas-centro",
+            name: "Peñas Blancas Centro",
+            patronSaint: "Sagrado Corazón de Jesús",
+            history:
+                "La sede parroquial ha sido el corazón espiritual de nuestra comunidad desde sus inicios, siendo testigo del crecimiento de la fe en toda la región. Fundada en la fe de los primeros colonos, el templo ha sido renovado para reflejar la gloria de Dios.",
+            novenaDate: "Mes de Junio",
+            image: "https://images.unsplash.com/photo-1590059392686-277d34346820?q=80&w=1200",
+            contact: "+506 2460-1234",
+            location: "Centro de Peñas Blancas, frente al parque.",
+            details:
+                "El templo principal cuenta con capacidad para 400 personas y un sagrario de madera tallada a mano.",
+        },
+        {
+            slug: "san-francisco",
+            name: "San Francisco de Asís",
+            patronSaint: "San Francisco de Asís",
+            history:
+                "Establecida con gran esfuerzo por los colonos locales, la filial de San Francisco destaca por su espíritu de sencillez y fraternidad. La comunidad se unió para construir este templo que hoy es lugar de retiro y oración.",
+            novenaDate: "4 de Octubre",
+            image: "https://images.unsplash.com/photo-1618342411894-3158728d6174?q=80&w=1200",
+            contact: "+506 8888-0001",
+            location: "San Francisco de Peñas Blancas, 2km al norte.",
+            details:
+                "Conocida por su coro infantil y su compromiso con la ecología integral, siguiendo el ejemplo de San Francisco.",
+        },
+        {
+            slug: "santa-clara",
+            name: "Santa Clara de Asís",
+            patronSaint: "Santa Clara de Asís",
+            history:
+                "La comunidad de Santa Clara se caracteriza por su devoción profunda y su compromiso con los más necesitados, siguiendo el legado de su patrona. El templo fue construido con piedra local y madera bendecida.",
+            novenaDate: "11 de Agosto",
+            image: "https://images.unsplash.com/photo-1594632367985-0565f49c0667?q=80&w=1200",
+            contact: "+506 8888-0002",
+            location: "Santa Clara de Peñas Blancas, sector este.",
+            details:
+                "Cuenta con un grupo de oración permanente y una pastoral social muy activa.",
+        },
+    ];
+
+    return filiales.map((filial) => ({
+        params: { slug: filial.slug },
+        props: { filial },
+    }));
+}
+
+const { filial } = Astro.props;
+---
+
+<Layout
+    title={filial.name}
+    description={`Comunidad de ${filial.name} - Parroquia de Peñas Blancas`}
+>
+    <!-- heroic header -->
+    <section
+        class="relative h-[60vh] flex items-center justify-center overflow-hidden"
+    >
+        <div class="absolute inset-0 z-0">
+            <img
+                src={filial.image}
+                alt={filial.name}
+                class="w-full h-full object-cover"
+            />
+            <div
+                class="absolute inset-0 bg-gradient-to-b from-deep-blue/40 via-deep-blue/70 to-parchment"
+            >
+            </div>
+        </div>
+
+        <div class="relative z-10 text-center animate-sacred-in px-4">
+            <div
+                class="inline-flex items-center space-x-2 bg-gold/20 backdrop-blur-md border border-gold/30 px-4 py-1 rounded-full mb-6"
+            >
+                <ArtisanalIcon name="church" size={14} class="text-gold" />
+                <span
+                    class="text-[10px] font-bold uppercase tracking-[0.2em] text-gold-light"
+                    >Filial Parroquial</span
+                >
+            </div>
+            <h1
+                class="text-6xl md:text-8xl font-display font-bold text-parchment leading-tight"
+            >
+                {filial.name}
+            </h1>
+            <p class="text-gold-light text-xl italic font-display mt-4">
+                Patrono: {filial.patronSaint}
+            </p>
+        </div>
+    </section>
+
+    <!-- content -->
+    <section class="py-24 bg-parchment">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-16 items-start">
+                <!-- Main Info -->
+                <div class="lg:col-span-2 space-y-12">
+                    <div>
+                        <SectionHeader
+                            tag="Nuestra Herencia"
+                            title="Historia y Fe"
+                            align="left"
+                        />
+                        <p
+                            class="text-xl text-deep-blue/80 leading-relaxed font-body italic mb-8"
+                        >
+                            {filial.history}
+                        </p>
+                        <p class="text-deep-blue/70 leading-relaxed">
+                            {filial.details}
+                        </p>
+                    </div>
+
+                    <div
+                        class="bg-gold/5 p-12 rounded-[3rem] border border-gold/20 relative overflow-hidden"
+                    >
+                        <div class="absolute -bottom-10 -right-10 opacity-5">
+                            <ArtisanalIcon name="star" size={200} />
+                        </div>
+                        <h3
+                            class="text-2xl font-display font-bold text-deep-blue mb-6"
+                        >
+                            Fiestas y Tradiciones
+                        </h3>
+                        <div class="flex items-center space-x-4">
+                            <div
+                                class="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center text-gold-dark"
+                            >
+                                <ArtisanalIcon
+                                    name="calendar-star"
+                                    size={24}
+                                    weight="bold"
+                                />
+                            </div>
+                            <div>
+                                <p
+                                    class="text-xs font-bold uppercase tracking-widest text-gold-dark"
+                                >
+                                    Novena y Fiesta Patronal
+                                </p>
+                                <p
+                                    class="text-xl font-display font-bold text-deep-blue"
+                                >
+                                    {filial.novenaDate}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar / Contact -->
+                <div class="space-y-8">
+                    <div
+                        class="p-10 bg-deep-blue text-parchment rounded-[3rem] shadow-2xl relative overflow-hidden"
+                    >
+                        <div class="absolute top-0 right-0 p-8 opacity-10">
+                            <ArtisanalIcon name="map-pin" size={80} />
+                        </div>
+
+                        <h3
+                            class="text-2xl font-display font-bold text-gold mb-8"
+                        >
+                            Información
+                        </h3>
+
+                        <div class="space-y-8">
+                            <div class="flex items-start space-x-4">
+                                <ArtisanalIcon
+                                    name="map-pin"
+                                    size={20}
+                                    class="text-gold mt-1"
+                                />
+                                <div>
+                                    <p
+                                        class="text-[10px] font-bold uppercase tracking-widest text-parchment/40 mb-1"
+                                    >
+                                        Ubicación
+                                    </p>
+                                    <p class="text-sm leading-relaxed">
+                                        {filial.location}
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-4">
+                                <ArtisanalIcon
+                                    name="phone"
+                                    size={20}
+                                    class="text-gold mt-1"
+                                />
+                                <div>
+                                    <p
+                                        class="text-[10px] font-bold uppercase tracking-widest text-parchment/40 mb-1"
+                                    >
+                                        Contacto local
+                                    </p>
+                                    <p class="text-sm">{filial.contact}</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-4">
+                                <ArtisanalIcon
+                                    name="clock"
+                                    size={20}
+                                    class="text-gold mt-1"
+                                />
+                                <div>
+                                    <p
+                                        class="text-[10px] font-bold uppercase tracking-widest text-parchment/40 mb-1"
+                                    >
+                                        Horarios
+                                    </p>
+                                    <p class="text-sm">
+                                        Consulte los horarios específicos de
+                                        misa en nuestra sección dedicada.
+                                    </p>
+                                    <a
+                                        href="/misa"
+                                        class="inline-flex items-center text-gold text-xs font-bold mt-4 hover:underline"
+                                    >
+                                        Ver horarios de misa
+                                        <ArtisanalIcon
+                                            name="arrow-right"
+                                            size={12}
+                                            class="ml-2"
+                                        />
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a
+                        href="/filiales"
+                        class="flex items-center justify-center space-x-3 w-full py-5 rounded-2xl border border-gold/20 text-deep-blue font-bold hover:bg-gold/5 transition-all group"
+                    >
+                        <ArtisanalIcon
+                            name="arrow-left"
+                            size={18}
+                            class="group-hover:-translate-x-2 transition-transform"
+                        />
+                        <span>Volver a Filiales</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</Layout>

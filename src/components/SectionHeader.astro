@@ -1,0 +1,64 @@
+---
+import { Cross } from "lucide-astro";
+
+interface Props {
+    tag?: string;
+    title: string;
+    subtitle?: string;
+    align?: "center" | "left";
+}
+
+const { tag, title, subtitle, align = "center" } = Astro.props;
+---
+
+<div
+    class={`max-w-3xl ${align === "center" ? "mx-auto text-center" : ""} mb-20 animate-sacred-in`}
+>
+    {
+        tag && (
+            <div
+                class={`flex items-center space-x-3 mb-6 ${align === "center" ? "justify-center" : ""}`}
+            >
+                <div class="h-[1px] w-8 bg-gold/50" />
+                <span class="text-sm uppercase tracking-[0.4em] text-gold-dark font-bold">
+                    {tag}
+                </span>
+                <div class="h-[1px] w-8 bg-gold/50" />
+            </div>
+        )
+    }
+
+    <div class="relative inline-block mb-8">
+        <h2
+            class="text-5xl md:text-6xl font-display font-bold text-deep-blue relative z-10"
+        >
+            {title}
+        </h2>
+        <div
+            class="absolute -bottom-2 left-0 w-full h-4 bg-gold/10 -z-10 rotate-[-1deg]"
+        >
+        </div>
+    </div>
+
+    {
+        subtitle && (
+            <p class="text-lg text-deep-blue/70 font-body max-w-2xl mx-auto leading-relaxed">
+                {subtitle}
+            </p>
+        )
+    }
+
+    <div
+        class={`flex items-center mt-10 ${align === "center" ? "justify-center" : ""}`}
+    >
+        <div
+            class="h-[1px] flex-grow max-w-[100px] bg-gradient-to-r from-transparent to-gold/30"
+        >
+        </div>
+        <Cross size={20} class="text-gold mx-6 opacity-40 rotate-45" />
+        <div
+            class="h-[1px] flex-grow max-w-[100px] bg-gradient-to-l from-transparent to-gold/30"
+        >
+        </div>
+    </div>
+</div>

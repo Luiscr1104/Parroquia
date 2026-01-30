@@ -1,0 +1,62 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import FilialCard from "../../components/FilialCard.astro";
+import SectionHeader from "../../components/SectionHeader.astro";
+import ArtisanalIcon from "../../components/ArtisanalIcon.astro";
+
+const filiales = [
+    {
+        slug: "penas-blancas-centro",
+        name: "Peñas Blancas Centro",
+        patronSaint: "Sagrado Corazón de Jesús",
+        history:
+            "La sede parroquial ha sido el corazón espiritual de nuestra comunidad desde sus inicios, siendo testigo del crecimiento de la fe en toda la región...",
+        novenaDate: "Mes de Junio",
+        image: "https://images.unsplash.com/photo-1590059392686-277d34346820?q=80&w=800",
+    },
+    {
+        slug: "san-francisco",
+        name: "San Francisco",
+        patronSaint: "San Francisco de Asís",
+        history:
+            "Establecida con gran esfuerzo por los colonos locales, la filial de San Francisco destaca por su espíritu de sencillez y fraternidad...",
+        novenaDate: "4 de Octubre",
+        image: "https://images.unsplash.com/photo-1618342411894-3158728d6174?q=80&w=800",
+    },
+    {
+        slug: "santa-clara",
+        name: "Santa Clara",
+        patronSaint: "Santa Clara de Asís",
+        history:
+            "La comunidad de Santa Clara se caracteriza por su devoción profunda y su compromiso con los más necesitados, siguiendo el legado de su patrona...",
+        novenaDate: "11 de Agosto",
+        image: "https://images.unsplash.com/photo-1594632367985-0565f49c0667?q=80&w=800",
+    },
+];
+---
+
+<Layout
+    title="Nuestras Filiales"
+    description="Conozca las comunidades que forman parte de la Parroquia de Peñas Blancas."
+>
+    <section class="relative py-24 bg-parchment-dark overflow-hidden">
+        <!-- background ornaments -->
+        <div
+            class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 opacity-5 pointer-events-none"
+        >
+            <ArtisanalIcon name="star" size={600} />
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <SectionHeader
+                tag="Comunidad Parroquial"
+                title="Nuestras Filiales"
+                subtitle="La Parroquia de Peñas Blancas se extiende a través de diversas comunidades, cada una con su propia historia, carisma y devoción a sus santos patronos."
+            />
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                {filiales.map((filial) => <FilialCard {...filial} />)}
+            </div>
+        </div>
+    </section>
+</Layout>

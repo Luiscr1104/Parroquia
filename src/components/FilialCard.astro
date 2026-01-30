@@ -1,0 +1,116 @@
+---
+import ArtisanalIcon from "./ArtisanalIcon.astro";
+
+interface Props {
+    slug: string;
+    name: string;
+    patronSaint: string;
+    history: string;
+    novenaDate: string;
+    image?: string;
+}
+
+const {
+    slug,
+    name,
+    patronSaint,
+    history,
+    novenaDate,
+    image = "https://images.unsplash.com/photo-1548625361-195fe5795df5?auto=format&fit=crop&q=80&w=800",
+} = Astro.props;
+---
+
+<div
+    class="bg-parchment rounded-3xl overflow-hidden sacred-border transition-all duration-500 hover:shadow-2xl group border-2"
+>
+    <div class="h-72 overflow-hidden relative">
+        <img
+            src={image}
+            alt={`Imagen de ${name}`}
+            class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+        />
+        <div
+            class="absolute inset-0 bg-gradient-to-t from-deep-blue/90 via-deep-blue/20 to-transparent"
+        >
+        </div>
+        <div
+            class="absolute inset-0 border-[12px] border-white/10 pointer-events-none"
+        >
+        </div>
+
+        <div class="absolute bottom-8 left-8 right-8">
+            <div
+                class="flex items-center space-x-2 text-gold-light text-[10px] font-bold uppercase tracking-[0.2em] mb-2 opacity-80"
+            >
+                <div class="w-4 h-[1px] bg-gold-light"></div>
+                <span>Comunidad</span>
+            </div>
+            <h3 class="text-4xl font-display font-bold text-parchment mb-2">
+                {name}
+            </h3>
+            <div
+                class="flex items-center text-parchment/70 text-sm font-medium"
+            >
+                <ArtisanalIcon name="info" size={14} class="mr-2 text-gold" />
+                <span>Patrono: {patronSaint}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="p-8 space-y-6">
+        <div class="flex items-start space-x-4">
+            <div
+                class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center shrink-0"
+            >
+                <ArtisanalIcon
+                    name="book-open-text"
+                    size={20}
+                    class="text-gold-dark"
+                />
+            </div>
+            <div>
+                <h4
+                    class="text-lg font-display font-semibold text-deep-blue mb-2"
+                >
+                    Nuestra Historia
+                </h4>
+                <p
+                    class="text-sm text-deep-blue/70 leading-relaxed line-clamp-4"
+                >
+                    {history}
+                </p>
+            </div>
+        </div>
+
+        <div class="flex items-start space-x-4">
+            <div
+                class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center shrink-0"
+            >
+                <ArtisanalIcon
+                    name="calendar-star"
+                    size={20}
+                    class="text-gold-dark"
+                />
+            </div>
+            <div>
+                <h4
+                    class="text-lg font-display font-semibold text-deep-blue mb-2"
+                >
+                    Novena y Fiestas
+                </h4>
+                <p class="text-sm text-deep-blue/70">
+                    Celebramos con alegría cada año: <span
+                        class="font-bold text-gold-dark">{novenaDate}</span
+                    >
+                </p>
+            </div>
+        </div>
+
+        <a
+            href={`/filiales/${slug}`}
+            class="inline-flex items-center justify-center w-full py-3 px-6 bg-gold hover:bg-gold-dark text-parchment font-medium rounded-xl transition-colors duration-300"
+        >
+            Ver más detalles
+        </a>
+    </div>
+</div>

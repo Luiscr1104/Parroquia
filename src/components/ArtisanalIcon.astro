@@ -1,0 +1,40 @@
+---
+interface Props {
+    name: string;
+    size?: number;
+    class?: string;
+    weight?: "thin" | "light" | "regular" | "bold" | "fill" | "duotone";
+    ornate?: boolean;
+}
+
+const {
+    name,
+    size = 24,
+    class: className = "",
+    weight = "regular",
+    ornate = false,
+} = Astro.props;
+
+// This component will use Phosphor icons.
+// Since we installed @phosphor-icons/core, we can use the web component or just render the SVG.
+// For Astro, using the SVG approach is more performant.
+---
+
+<div class={`relative inline-flex items-center justify-center ${className}`}>
+    {
+        ornate && (
+            <div class="absolute inset-[-8px] border border-gold/20 rounded-lg rotate-45 pointer-events-none transition-transform group-hover:rotate-90 duration-700" />
+        )
+    }
+    {
+        ornate && (
+            <div class="absolute inset-[-4px] border border-gold/10 rounded-sm -rotate-12 pointer-events-none transition-transform group-hover:rotate-0 duration-500" />
+        )
+    }
+
+    <i class={`ph-${name} ph-${weight}`} style={`font-size: ${size}px;`}></i>
+</div>
+
+<style>
+    /* We import the Phosphor icons stylesheet here or in the layout */
+</style>

@@ -1,0 +1,87 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ArtisanalIcon from "../../components/ArtisanalIcon.astro";
+import SectionHeader from "../../components/SectionHeader.astro";
+
+const dogmas = [
+    {
+        title: "Maternidad Divina",
+        latin: "Theotokos",
+        description:
+            "María es verdadera Madre de Dios por haber engendrado en su seno según la humanidad al Hijo de Dios.",
+        icon: "heart",
+        color: "bg-sacred-red/10 text-sacred-red",
+    },
+    {
+        title: "Inmaculada Concepción",
+        latin: "Immaculata Conceptio",
+        description:
+            "María fue preservada inmune de toda mancha de culpa original desde el primer instante de su concepción.",
+        icon: "seal-check",
+        color: "bg-blue-500/10 text-blue-600",
+    },
+    {
+        title: "Perpetua Virginidad",
+        latin: "Aeiparthenos",
+        description:
+            "María fue virgen antes, durante y después del parto de Jesucristo, el Hijo de Dios hecho hombre.",
+        icon: "sparkle",
+        color: "bg-gold/10 text-gold-dark",
+    },
+    {
+        title: "Asunción a los Cielos",
+        latin: "Assumptio ad Caelum",
+        description:
+            "Terminado el curso de su vida terrenal, María fue asunta en cuerpo y alma a la gloria celestial.",
+        icon: "crown",
+        color: "bg-deep-blue/10 text-deep-blue",
+    },
+];
+---
+
+<Layout
+    title="Dogmas Marianos"
+    description="Conoce las cuatro verdades de fe sobre la Virgen María."
+>
+    <section class="py-24 bg-parchment overflow-hidden">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <SectionHeader
+                tag="Verdades de Fe"
+                title="Dogmas Marianos"
+                subtitle="Los dogmas son verdades divinamente reveladas que la Iglesia nos propone creer como artículos de fe."
+            />
+
+            <div class="space-y-12">
+                {
+                    dogmas.map((dogma, index) => (
+                        <div
+                            class={`flex flex-col md:flex-row items-center gap-8 p-10 rounded-3xl sacred-border bg-parchment shadow-sm transition-all duration-500 hover:shadow-xl ${index % 2 !== 0 ? "md:flex-row-reverse" : ""}`}
+                        >
+                            <div
+                                class={`w-20 h-20 rounded-2xl flex items-center justify-center shrink-0 ${dogma.color}`}
+                            >
+                                <ArtisanalIcon
+                                    name={dogma.icon}
+                                    size={40}
+                                    weight="duotone"
+                                    ornate={true}
+                                />
+                            </div>
+                            <div class="text-center md:text-left">
+                                <span class="text-xs uppercase tracking-[0.2em] font-bold text-gold-dark/60 mb-2 block">
+                                    {dogma.latin}
+                                </span>
+                                <h3 class="text-3xl font-display font-bold text-deep-blue mb-4">
+                                    {dogma.title}
+                                </h3>
+                                <p class="text-deep-blue/70 leading-relaxed text-lg italic">
+                                    "{dogma.description}"
+                                </p>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+</Layout>

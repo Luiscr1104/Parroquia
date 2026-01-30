@@ -1,0 +1,132 @@
+---
+import ArtisanalIcon from "./ArtisanalIcon.astro";
+
+const currentYear = new Date().getFullYear();
+
+const sections = [
+    {
+        title: "Nuestra Parroquia",
+        links: [
+            { name: "Historia", href: "#history" },
+            { name: "Sacerdotes", href: "#priests" },
+            { name: "Sacramentos", href: "#sacraments" },
+            { name: "Horarios de Misa", href: "/misa" },
+        ],
+    },
+    {
+        title: "Comunidad",
+        links: [
+            { name: "Filiales", href: "/filiales" },
+            { name: "Catequesis", href: "#catechesis" },
+            { name: "Grupos Juveniles", href: "#youth" },
+            { name: "Cáritas", href: "#caritas" },
+        ],
+    },
+];
+---
+
+<footer
+    class="bg-deep-blue text-parchment/90 pt-16 pb-8 border-t-4 border-gold"
+>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16"
+        >
+            <!-- branding column -->
+            <div class="space-y-6">
+                <div class="flex items-center space-x-3 text-gold">
+                    <ArtisanalIcon name="cross" size={32} weight="bold" />
+                    <span class="text-2xl font-display font-bold tracking-tight"
+                        >Peñas Blancas</span
+                    >
+                </div>
+                <p class="text-sm leading-relaxed text-parchment/70 max-w-xs">
+                    Sirviendo a la comunidad de Peñas Blancas con amor y fe,
+                    llevando la palabra de Dios a cada rincón de nuestras
+                    filiales.
+                </p>
+                <div class="flex space-x-4">
+                    <a
+                        href="#"
+                        class="text-parchment/50 hover:text-gold transition-colors"
+                        ><ArtisanalIcon name="facebook-logo" size={20} /></a
+                    >
+                    <a
+                        href="#"
+                        class="text-parchment/50 hover:text-gold transition-colors"
+                        ><ArtisanalIcon name="instagram-logo" size={20} /></a
+                    >
+                </div>
+            </div>
+
+            <!-- quick links -->
+            {
+                sections.map((section) => (
+                    <div>
+                        <h3 class="text-gold font-display font-semibold text-lg mb-6">
+                            {section.title}
+                        </h3>
+                        <ul class="space-y-4">
+                            {section.links.map((link) => (
+                                <li>
+                                    <a
+                                        href={link.href}
+                                        class="text-sm hover:text-gold hover:translate-x-1 inline-block transition-all"
+                                    >
+                                        {link.name}
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                ))
+            }
+
+            <!-- contact -->
+            <div>
+                <h3 class="text-gold font-display font-semibold text-lg mb-6">
+                    Contacto
+                </h3>
+                <ul class="space-y-4">
+                    <li class="flex items-start space-x-3 text-sm">
+                        <ArtisanalIcon
+                            name="map-pin"
+                            size={18}
+                            class="text-gold shrink-0 mt-0.5"
+                        />
+                        <span>Peñas Blancas, San Ramón, Costa Rica</span>
+                    </li>
+                    <li class="flex items-center space-x-3 text-sm">
+                        <ArtisanalIcon
+                            name="phone"
+                            size={18}
+                            class="text-gold shrink-0"
+                        />
+                        <span>+506 2460-0000</span>
+                    </li>
+                    <li class="flex items-center space-x-3 text-sm">
+                        <ArtisanalIcon
+                            name="envelope"
+                            size={18}
+                            class="text-gold shrink-0"
+                        />
+                        <span>info@parroquiapenasblancas.com</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="pt-8 border-t border-parchment/10 text-center">
+            <p class="text-xs text-parchment/40">
+                &copy; {currentYear} Parroquia de Peñas Blancas. Todos los derechos
+                reservados. <br class="sm:hidden" />
+                <span class="hidden sm:inline">|</span> Un diseño con propósito por
+                <a
+                    href="https://luisroberto.dev"
+                    class="text-gold/60 hover:text-gold transition-colors font-bold"
+                    >luisroberto.dev</a
+                >
+            </p>
+        </div>
+    </div>
+</footer>

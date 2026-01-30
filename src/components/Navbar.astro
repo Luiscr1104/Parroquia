@@ -1,0 +1,114 @@
+---
+import { Cross, Menu, X } from "lucide-astro";
+import ArtisanalIcon from "./ArtisanalIcon.astro";
+
+const navItems = [
+    { name: "Inicio", href: "/", icon: "house-line" },
+    { name: "Misa", href: "/misa", icon: "hands-praying" },
+    { name: "Filiales", href: "/filiales", icon: "church" },
+    { name: "María", href: "/maria", icon: "heart" },
+    { name: "Noticias", href: "/noticias", icon: "newspaper" },
+];
+---
+
+<header
+    class="sticky top-4 z-50 w-[95%] max-w-7xl mx-auto glass-card rounded-2xl border border-gold/20"
+>
+    <div class="px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+            <!-- logo -->
+            <a href="/" class="flex items-center space-x-4 group">
+                <div class="relative">
+                    <div
+                        class="w-12 h-12 rounded-xl bg-gold flex items-center justify-center text-parchment transition-all group-hover:rotate-[360deg] duration-1000 shadow-lg"
+                    >
+                        <ArtisanalIcon name="cross" weight="bold" size={26} />
+                    </div>
+                    <div
+                        class="absolute -inset-1 border border-gold/30 rounded-xl group-hover:scale-110 transition-transform duration-500"
+                    >
+                    </div>
+                </div>
+                <div class="flex flex-col">
+                    <span
+                        class="text-2xl font-display font-bold tracking-tight text-deep-blue group-hover:text-gold-dark transition-colors duration-300"
+                        >Peñas Blancas</span
+                    >
+                    <span
+                        class="text-[9px] uppercase tracking-[0.3em] text-deep-blue/40 font-bold"
+                        >Comunidad Parroquial</span
+                    >
+                </div>
+            </a>
+
+            <!-- desktop nav -->
+            <nav class="hidden md:flex space-x-8">
+                {
+                    navItems.map((item) => (
+                        <a
+                            href={item.href}
+                            class="flex items-center space-x-2 text-sm font-medium text-deep-blue/70 hover:text-gold-dark transition-colors duration-200 relative group px-2 py-1"
+                        >
+                            <ArtisanalIcon
+                                name={item.icon}
+                                size={18}
+                                class="text-gold -ml-6 mr-2 opacity-0 group-hover:opacity-100 transition-all group-hover:translate-x-1"
+                            />
+                            <span>{item.name}</span>
+                            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full" />
+                        </a>
+                    ))
+                }
+            </nav>
+
+            <!-- mobile menu button -->
+            <div class="md:hidden">
+                <button
+                    id="mobile-menu-button"
+                    class="text-gold-dark p-2"
+                    aria-label="Abrir menú"
+                >
+                    <Menu id="menu-icon" size={28} />
+                    <X id="close-icon" size={28} class="hidden" />
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- mobile nav -->
+    <div
+        id="mobile-menu"
+        class="hidden md:hidden bg-parchment border-b border-gold/10"
+    >
+        <div class="px-4 pt-2 pb-6 space-y-1">
+            {
+                navItems.map((item) => (
+                    <a
+                        href={item.href}
+                        class="flex items-center space-x-4 px-3 py-4 text-base font-medium text-deep-blue/80 hover:bg-gold/5 hover:text-gold-dark rounded-lg transition-all"
+                    >
+                        <ArtisanalIcon
+                            name={item.icon}
+                            size={22}
+                            class="text-gold"
+                        />
+                        <span>{item.name}</span>
+                    </a>
+                ))
+            }
+        </div>
+    </div>
+</header>
+
+<script>
+    const btn = document.getElementById("mobile-menu-button");
+    const menu = document.getElementById("mobile-menu");
+    const menuIcon = document.getElementById("menu-icon");
+    const closeIcon = document.getElementById("close-icon");
+
+    btn?.addEventListener("click", () => {
+        menu?.classList.toggle("hidden");
+        menuIcon?.classList.toggle("hidden");
+        closeIcon?.classList.toggle("hidden");
+    });
+</script>

@@ -1,0 +1,99 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ArtisanalIcon from "../../components/ArtisanalIcon.astro";
+
+const advocaciones = [
+    {
+        name: "Nuestra Señora de los Ángeles",
+        location: "Costa Rica",
+        history:
+            'Aparecida el 2 de agosto de 1635 a Juana Pereira, la "Negrita" es la patrona querida de todo el pueblo costarricense...',
+        image: "/images/maria/virgen_angeles.png",
+    },
+    {
+        name: "Virgen de Guadalupe",
+        location: "México",
+        history:
+            "Aparecida a San Juan Diego en el cerro del Tepeyac en 1531, dejando su imagen milagrosa en la tilma del indio...",
+        image: "https://images.unsplash.com/photo-1618342411894-3158728d6174?q=80&w=800",
+    },
+    {
+        name: "Virgen de Fátima",
+        location: "Portugal",
+        history:
+            "Se apareció a tres pastorcitos en Cova da Iria en 1917, pidiendo oración y penitencia por la conversión del mundo...",
+        image: "https://images.unsplash.com/photo-1594632367985-0565f49c0667?q=80&w=800",
+    },
+];
+---
+
+<Layout
+    title="Advocaciones Marianas"
+    description="Historias y mensajes de la Virgen María en sus diferentes apariciones."
+>
+    <section class="py-24 bg-parchment-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20 animate-sacred-in">
+                <h2
+                    class="text-gold-dark font-display font-bold text-lg mb-4 tracking-widest uppercase"
+                >
+                    Flores de María
+                </h2>
+                <h1
+                    class="text-5xl md:text-6xl font-display font-bold text-deep-blue mb-8"
+                >
+                    Advocaciones
+                </h1>
+                <div class="h-1 w-24 bg-gold mx-auto mb-8"></div>
+                <p class="text-lg text-deep-blue/70 max-w-2xl mx-auto">
+                    María se manifiesta de diversas maneras según la cultura y
+                    necesidad de sus hijos, pero sigue siendo la misma Madre de
+                    Dios.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                {
+                    advocaciones.map((adv) => (
+                        <div class="bg-parchment rounded-3xl overflow-hidden sacred-border group flex flex-col">
+                            <div class="h-56 overflow-hidden relative">
+                                <img
+                                    src={adv.image}
+                                    alt={adv.name}
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                />
+                                <div class="absolute inset-0 bg-gradient-to-t from-deep-blue/60 to-transparent" />
+                                <div class="absolute bottom-4 left-6 flex items-center text-parchment space-x-2">
+                                    <ArtisanalIcon
+                                        name="map-pin"
+                                        size={14}
+                                        class="text-gold"
+                                    />
+                                    <span class="text-xs font-bold uppercase tracking-wider">
+                                        {adv.location}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="p-8 flex-grow space-y-4">
+                                <h3 class="text-2xl font-display font-bold text-deep-blue group-hover:text-gold-dark transition-colors">
+                                    {adv.name}
+                                </h3>
+                                <p class="text-sm text-deep-blue/60 leading-relaxed italic">
+                                    {adv.history}
+                                </p>
+                                <div class="pt-4 flex items-center text-gold-dark text-sm font-bold">
+                                    <ArtisanalIcon
+                                        name="info"
+                                        size={16}
+                                        class="mr-2"
+                                    />
+                                    <span>Conoce su historia completa</span>
+                                </div>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+</Layout>

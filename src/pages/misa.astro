@@ -1,0 +1,208 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ArtisanalIcon from "../components/ArtisanalIcon.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+
+const schedules = {
+    daily: [
+        { day: "Lunes a Viernes", time: "6:00 PM", place: "Templo Parroquial" },
+        {
+            day: "Jueves (Hora Santa)",
+            time: "5:00 PM",
+            place: "Templo Parroquial",
+        },
+    ],
+    sunday: [
+        { time: "8:00 AM", place: "Peñas Blancas Centro" },
+        { time: "10:00 AM", place: "San Francisco" },
+        { time: "4:00 PM", place: "Santa Clara" },
+        { time: "6:00 PM", place: "Peñas Blancas Centro" },
+    ],
+    confessions: [
+        {
+            day: "Martes y Jueves",
+            time: "4:30 PM - 5:30 PM",
+            place: "Oficina Parroquial",
+        },
+        {
+            day: "Sábados",
+            time: "9:00 AM - 11:00 AM",
+            place: "Templo Parroquial",
+        },
+    ],
+};
+---
+
+<Layout
+    title="Horarios de Misa"
+    description="Consulte los horarios de la Santa Misa, Hora Santa y Confesiones en nuestra parroquia y filiales."
+>
+    <!-- hero -->
+    <section class="pt-32 pb-20 bg-deep-blue relative overflow-hidden">
+        <div
+            class="absolute inset-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1548625361-195fe5795df5?q=80&w=1600')] bg-cover bg-center"
+        >
+        </div>
+        <div class="max-w-7xl mx-auto px-4 text-center relative z-10">
+            <h1
+                class="text-6xl md:text-8xl font-display font-bold text-parchment mb-6 animate-sacred-in"
+            >
+                Vida Sacramental
+            </h1>
+            <p
+                class="text-xl text-gold-light max-w-2xl mx-auto font-body italic"
+            >
+                "Vengan a mí todos los que están cansados y agobiados, y yo los
+                aliviaré."
+            </p>
+        </div>
+    </section>
+
+    <!-- schedules -->
+    <section class="py-24 bg-parchment relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                <!-- Daily Mass -->
+                <div
+                    class="glass-card p-10 rounded-[3rem] border border-gold/20 flex flex-col items-center text-center group hover:border-gold transition-all duration-500 shadow-xl"
+                >
+                    <div
+                        class="w-20 h-20 rounded-2xl bg-gold/10 flex items-center justify-center mb-8 border border-gold/20"
+                    >
+                        <ArtisanalIcon
+                            name="sun"
+                            size={40}
+                            weight="duotone"
+                            ornate={true}
+                            class="text-gold-dark"
+                        />
+                    </div>
+                    <h2
+                        class="text-3xl font-display font-bold text-deep-blue mb-8"
+                    >
+                        Misa Diaria
+                    </h2>
+                    <div class="w-full space-y-6">
+                        {
+                            schedules.daily.map((item) => (
+                                <div class="border-b border-gold/10 pb-4 last:border-0">
+                                    <p class="text-gold-dark font-bold text-sm uppercase tracking-widest mb-1">
+                                        {item.day}
+                                    </p>
+                                    <p class="text-2xl font-display font-bold text-deep-blue mb-1">
+                                        {item.time}
+                                    </p>
+                                    <p class="text-xs text-deep-blue/60 font-medium italic">
+                                        {item.place}
+                                    </p>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+
+                <!-- Sunday Mass -->
+                <div
+                    class="bg-deep-blue p-10 rounded-[3rem] border-2 border-gold flex flex-col items-center text-center shadow-2xl relative scale-105 z-20"
+                >
+                    <div
+                        class="absolute -top-6 left-1/2 -translate-x-1/2 bg-gold px-6 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest text-parchment"
+                    >
+                        Día del Señor
+                    </div>
+                    <div
+                        class="w-20 h-20 rounded-2xl bg-gold flex items-center justify-center mb-8 shadow-lg shadow-gold/20"
+                    >
+                        <ArtisanalIcon
+                            name="hands-praying"
+                            size={40}
+                            weight="bold"
+                            class="text-parchment"
+                        />
+                    </div>
+                    <h2 class="text-3xl font-display font-bold text-gold mb-8">
+                        Domingos
+                    </h2>
+                    <div class="w-full space-y-6">
+                        {
+                            schedules.sunday.map((item) => (
+                                <div class="border-b border-gold/20 pb-4 last:border-0 last:pb-0">
+                                    <p class="text-parchment font-display font-bold text-2xl mb-1">
+                                        {item.time}
+                                    </p>
+                                    <p class="text-gold-light text-sm font-bold uppercase tracking-widest">
+                                        {item.place}
+                                    </p>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+
+                <!-- Confessions -->
+                <div
+                    class="glass-card p-10 rounded-[3rem] border border-gold/20 flex flex-col items-center text-center group hover:border-gold transition-all duration-500 shadow-xl"
+                >
+                    <div
+                        class="w-20 h-20 rounded-2xl bg-gold/10 flex items-center justify-center mb-8 border border-gold/20"
+                    >
+                        <ArtisanalIcon
+                            name="hand-heart"
+                            size={40}
+                            weight="duotone"
+                            ornate={true}
+                            class="text-gold-dark"
+                        />
+                    </div>
+                    <h2
+                        class="text-3xl font-display font-bold text-deep-blue mb-8"
+                    >
+                        Confesiones
+                    </h2>
+                    <div class="w-full space-y-6">
+                        {
+                            schedules.confessions.map((item) => (
+                                <div class="border-b border-gold/10 pb-4 last:border-0">
+                                    <p class="text-gold-dark font-bold text-sm uppercase tracking-widest mb-1">
+                                        {item.day}
+                                    </p>
+                                    <p class="text-2xl font-display font-bold text-deep-blue mb-1">
+                                        {item.time}
+                                    </p>
+                                    <p class="text-xs text-deep-blue/60 font-medium italic">
+                                        {item.place}
+                                    </p>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- note -->
+    <section class="pb-32 bg-parchment">
+        <div class="max-w-4xl mx-auto px-4">
+            <div
+                class="p-12 bg-gold/5 rounded-[3rem] border border-gold/20 text-center relative overflow-hidden"
+            >
+                <div class="absolute -top-20 -right-20 opacity-5">
+                    <ArtisanalIcon name="info" size={300} />
+                </div>
+                <h3 class="text-2xl font-display font-bold text-deep-blue mb-4">
+                    Nota importante
+                </h3>
+                <p class="text-deep-blue/70 italic leading-relaxed">
+                    Los horarios pueden variar durante festividades especiales o
+                    tiempos litúrgicos como Cuaresma, Semana Santa o Navidad. Le
+                    recomendamos estar atento a la sección de <a
+                        href="/noticias"
+                        class="text-gold-dark font-bold hover:underline"
+                        >Noticias</a
+                    > para avisos específicos.
+                </p>
+            </div>
+        </div>
+    </section>
+</Layout>

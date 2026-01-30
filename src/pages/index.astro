@@ -1,0 +1,312 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { ChevronRight } from "lucide-astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import ArtisanalIcon from "../components/ArtisanalIcon.astro";
+
+const featuredSections = [
+	{
+		name: "Nuestras Filiales",
+		href: "/filiales",
+		icon: "church",
+		desc: "Conoce las comunidades que forman nuestra familia parroquial.",
+	},
+	{
+		name: "Sección Mariana",
+		href: "/maria",
+		icon: "heart",
+		desc: "Devoción, dogmas y advocaciones de nuestra Madre María.",
+	},
+	{
+		name: "Noticias y Avisos",
+		href: "/noticias",
+		icon: "newspaper",
+		desc: "Mantente al día con las actividades y anuncios.",
+	},
+];
+---
+
+<Layout
+	title="Bienvenido"
+	description="Sitio oficial de la Parroquia de Peñas Blancas. Comunidad de fe, esperanza y caridad."
+>
+	<!-- hero -->
+	<section
+		class="min-h-screen relative flex items-center justify-center pt-20"
+	>
+		<div class="absolute inset-0 z-0">
+			<img
+				src="/images/hero/church_interior.png"
+				alt="Interior majestuoso de la Parroquia"
+				class="w-full h-full object-cover"
+			/>
+			<div
+				class="absolute inset-0 bg-gradient-to-b from-deep-blue/80 via-deep-blue/60 to-parchment"
+			>
+			</div>
+		</div>
+
+		<div
+			class="relative z-10 max-w-7xl mx-auto px-4 text-center animate-sacred-in"
+		>
+			<div
+				class="inline-flex items-center space-x-3 bg-gold/20 backdrop-blur-sm border border-gold/30 px-6 py-2 rounded-full mb-8"
+			>
+				<ArtisanalIcon
+					name="cross"
+					weight="bold"
+					size={16}
+					class="text-gold"
+				/>
+				<span
+					class="text-xs uppercase tracking-[0.3em] font-bold text-gold-light"
+					>Comunidad de Fe</span
+				>
+			</div>
+
+			<h1
+				class="text-6xl md:text-8xl font-display font-bold text-parchment mb-8 leading-tight"
+			>
+				Parroquia <br />
+				<span class="gold-gradient">Peñas Blancas</span>
+			</h1>
+
+			<p
+				class="text-xl md:text-2xl text-parchment/80 font-body italic max-w-2xl mx-auto mb-12"
+			>
+				"Donde la fe florece y la comunidad se une en el amor de
+				Cristo."
+			</p>
+
+			<div class="flex flex-col sm:flex-row gap-6 justify-center">
+				<a
+					href="/filiales"
+					class="px-10 py-5 bg-gold hover:bg-gold-dark text-parchment font-bold rounded-2xl transition-all shadow-xl hover:-translate-y-1"
+				>
+					Nuestras Filiales
+				</a>
+				<a
+					href="/maria"
+					class="px-10 py-5 bg-parchment/10 backdrop-blur-md border border-parchment/30 text-parchment hover:bg-parchment hover:text-deep-blue font-bold rounded-2xl transition-all shadow-xl hover:-translate-y-1"
+				>
+					Sección de María
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- welcoming section -->
+	<section class="py-32 bg-parchment relative overflow-hidden">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+				<div class="relative">
+					<div
+						class="absolute -top-10 -left-10 w-40 h-40 bg-gold/5 rounded-full blur-3xl"
+					>
+					</div>
+					<img
+						src="/images/maria/virgen_angeles.png"
+						alt="Nuestra Señora de los Ángeles"
+						class="rounded-[3rem] sacred-border shadow-2xl relative z-10"
+					/>
+				</div>
+
+				<div class="space-y-8">
+					<SectionHeader
+						tag="Bienvenidos"
+						title="Una casa de oración para todos."
+						subtitle="Nuestra parroquia es más que un edificio; es un cuerpo vivo de creyentes que buscan seguir los pasos de Jesús en nuestra hermosa tierra de Peñas Blancas. Aquí encontrarás un espacio para el encuentro con Dios y con tus hermanos."
+						align="left"
+					/>
+					<ul class="space-y-4 pt-4">
+						{
+							[
+								"Santa Misa Diaria",
+								"Confesiones",
+								"Formación de Fe",
+								"Atención Social",
+							].map((item) => (
+								<li class="flex items-center space-x-3 text-deep-blue/80 font-medium">
+									<div class="w-2 h-2 rounded-full bg-gold" />
+									<span>{item}</span>
+								</li>
+							))
+						}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- quick links grid -->
+	<section class="py-32 bg-parchment-dark relative overflow-hidden">
+		<!-- subtle background ornament -->
+		<div
+			class="absolute top-0 left-1/2 -translate-x-1/2 opacity-5 pointer-events-none"
+		>
+			<ArtisanalIcon name="cross" size={600} />
+		</div>
+
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+			<SectionHeader
+				tag="Nuestra Misión"
+				title="Caminos de Fe"
+				subtitle="Diferentes maneras de vivir tu espiritualidad y compromiso con la comunidad en nuestra parroquia."
+			/>
+
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-8 pt-10">
+				{
+					featuredSections.map((section) => (
+						<a
+							href={section.href}
+							class="group relative flex flex-col p-1 bg-parchment rounded-[2rem] sacred-border overflow-hidden transition-all duration-700 hover:-translate-y-2 hover:shadow-2xl"
+						>
+							<div class="absolute inset-0 bg-gradient-to-br from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
+							<div class="relative z-10 p-10 flex flex-col h-full bg-parchment/40 backdrop-blur-sm rounded-[1.8rem]">
+								<div class="w-16 h-16 rounded-2xl bg-parchment border border-gold/20 flex items-center justify-center mb-8 shadow-sm group-hover:border-gold group-hover:shadow-gold/20 transition-all duration-500">
+									<ArtisanalIcon
+										name={section.icon}
+										size={32}
+										weight="duotone"
+										ornate={true}
+										class="text-gold-dark group-hover:scale-110 transition-transform duration-500"
+									/>
+								</div>
+
+								<div class="flex-grow">
+									<h4 class="text-3xl font-display font-bold text-deep-blue mb-4 leading-tight group-hover:text-gold-dark transition-colors">
+										{section.name}
+									</h4>
+									<p class="text-deep-blue/60 leading-relaxed font-body italic mb-8">
+										{section.desc}
+									</p>
+								</div>
+
+								<div class="flex items-center justify-between pt-6 border-t border-gold/10">
+									<div class="flex items-center text-gold-dark font-bold text-xs uppercase tracking-widest">
+										<span>Descubrir</span>
+										<ChevronRight
+											size={16}
+											class="ml-2 transition-transform group-hover:translate-x-2"
+										/>
+									</div>
+									<ArtisanalIcon
+										name="cross"
+										size={18}
+										class="text-gold/20 group-hover:text-gold/50 transition-colors opacity-0 group-hover:opacity-100"
+									/>
+								</div>
+							</div>
+						</a>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<!-- parish life section -->
+	<section class="py-32 bg-parchment relative overflow-hidden">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<SectionHeader
+				tag="Nuestra Familia"
+				title="Vida Parroquial"
+				subtitle="Conozca a quienes sirven en nuestra comunidad y los grupos donde tú también puedes participar."
+			/>
+
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-12 pt-10">
+				<!-- priests -->
+				<div
+					class="p-10 bg-gold/5 rounded-[3rem] border border-gold/20 flex flex-col md:flex-row items-center gap-8"
+				>
+					<div
+						class="w-32 h-32 rounded-full border-4 border-gold overflow-hidden shrink-0 shadow-xl"
+					>
+						<img
+							src="https://images.unsplash.com/photo-1544427920-c49ccfb85579?q=80&w=400"
+							alt="Sacerdote"
+							class="w-full h-full object-cover"
+						/>
+					</div>
+					<div>
+						<h3
+							class="text-2xl font-display font-bold text-deep-blue mb-2"
+						>
+							Pbro. Juan Bautista
+						</h3>
+						<p
+							class="text-gold-dark font-bold text-xs uppercase tracking-widest mb-4"
+						>
+							Cura Párroco
+						</p>
+						<p
+							class="text-deep-blue/70 text-sm leading-relaxed italic"
+						>
+							"El Señor es mi pastor, nada me falta. Guiando a
+							esta comunidad con alegría y esperanza."
+						</p>
+					</div>
+				</div>
+
+				<!-- groups -->
+				<div
+					class="p-10 bg-deep-blue text-parchment rounded-[3rem] shadow-2xl relative overflow-hidden group"
+				>
+					<div
+						class="absolute -top-10 -right-10 opacity-10 group-hover:scale-110 transition-transform duration-700"
+					>
+						<ArtisanalIcon name="users-three" size={200} />
+					</div>
+					<div class="relative z-10">
+						<h3
+							class="text-2xl font-display font-bold text-gold mb-6"
+						>
+							Grupos y Movimientos
+						</h3>
+						<ul class="grid grid-cols-2 gap-4">
+							{
+								[
+									"Catequesis",
+									"Pastoral Juvenil",
+									"Coro Parroquial",
+									"Lectores",
+									"Ministros Extraordinarios",
+									"Pastoral Social",
+								].map((group) => (
+									<li class="flex items-center space-x-2 text-sm text-parchment/80">
+										<ArtisanalIcon
+											name="caret-right"
+											size={12}
+											class="text-gold"
+										/>
+										<span>{group}</span>
+									</li>
+								))
+							}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- verse section -->
+	<section class="py-40 bg-deep-blue text-center relative">
+		<div
+			class="absolute inset-0 opacity-5 pointer-events-none flex items-center justify-center"
+		>
+			<ArtisanalIcon name="cross" size={400} />
+		</div>
+		<div class="max-w-4xl mx-auto px-4 relative z-10">
+			<blockquote
+				class="text-4xl md:text-5xl font-display font-italic text-parchment mb-12 opacity-90 italic leading-snug"
+			>
+				"Donde dos o tres se reúnen en mi nombre, allí estoy yo en medio
+				de ellos."
+			</blockquote>
+			<cite class="text-gold uppercase tracking-[0.3em] font-bold text-sm"
+				>— Mateo 18:20</cite
+			>
+		</div>
+	</section>
+</Layout>

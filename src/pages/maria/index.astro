@@ -1,0 +1,118 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { ChevronRight } from "lucide-astro";
+import ArtisanalIcon from "../../components/ArtisanalIcon.astro";
+import SectionHeader from "../../components/SectionHeader.astro";
+
+const featuredAdvocations = [
+    {
+        name: "Nuestra Señora de los Ángeles",
+        title: "Patrona de Costa Rica",
+        image: "/images/maria/virgen_angeles.png",
+    },
+    {
+        name: "Virgen de Guadalupe",
+        title: "Emperatriz de América",
+        image: "https://images.unsplash.com/photo-1618342411894-3158728d6174?q=80&w=800",
+    },
+];
+---
+
+<Layout
+    title="María, Madre Nuestra"
+    description="Sección dedicada a la Virgen María, sus advocaciones y dogmas."
+>
+    <!-- hero section -->
+    <section
+        class="h-[60vh] relative flex items-center justify-center overflow-hidden bg-deep-blue"
+    >
+        <div
+            class="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1548625361-195fe5795df5?q=80&w=1600')] bg-cover bg-center"
+        >
+        </div>
+        <div
+            class="absolute inset-0 bg-gradient-to-b from-deep-blue/60 to-deep-blue"
+        >
+        </div>
+
+        <div class="relative z-10 text-center px-4">
+            <h2 class="text-gold font-body text-xl italic mb-4">
+                "A Jesús por María"
+            </h2>
+            <h1
+                class="text-6xl md:text-8xl font-display font-bold text-parchment leading-tight"
+            >
+                María
+            </h1>
+            <p class="text-parchment/70 max-w-lg mx-auto mt-6">
+                Explora la vida, dogmas y las hermosas advocaciones de nuestra
+                Madre Santísima.
+            </p>
+        </div>
+    </section>
+
+    <!-- navigation tiles -->
+    <section class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <!-- dogmas card -->
+            <a
+                href="/maria/dogmas"
+                class="group relative h-96 rounded-3xl overflow-hidden sacred-border flex items-end p-10 bg-parchment-dark shadow-xl hover:-translate-y-2 transition-all duration-500"
+            >
+                <div
+                    class="absolute top-10 right-10 text-gold-dark/10 group-hover:text-gold-dark/20 transition-colors"
+                >
+                    <ArtisanalIcon name="cross" size={180} />
+                </div>
+                <div class="relative z-10">
+                    <h3
+                        class="text-4xl font-display font-bold text-deep-blue mb-4"
+                    >
+                        Dogmas Marianos
+                    </h3>
+                    <p class="text-deep-blue/60 mb-6 max-w-sm">
+                        Las cuatro verdades de fe sobre la Virgen María
+                        propuestas por la Iglesia.
+                    </p>
+                    <div class="flex items-center text-gold-dark font-bold">
+                        <span>Explorar Dogmas</span>
+                        <ChevronRight
+                            size={20}
+                            class="ml-2 transition-transform group-hover:translate-x-2"
+                        />
+                    </div>
+                </div>
+            </a>
+
+            <!-- advocations card -->
+            <a
+                href="/maria/advocaciones"
+                class="group relative h-96 rounded-3xl overflow-hidden sacred-border flex items-end p-10 bg-deep-blue text-parchment shadow-xl hover:-translate-y-2 transition-all duration-500"
+            >
+                <div
+                    class="absolute top-10 right-10 text-gold/5 group-hover:text-gold/10 transition-colors"
+                >
+                    <ArtisanalIcon name="heart" size={180} />
+                </div>
+                <div class="relative z-10">
+                    <h3
+                        class="text-4xl font-display font-bold text-parchment mb-4"
+                    >
+                        Advocaciones
+                    </h3>
+                    <p class="text-parchment/60 mb-6 max-w-sm">
+                        Historias y devociones marianas que han florecido en
+                        todo el mundo.
+                    </p>
+                    <div class="flex items-center text-gold font-bold">
+                        <span>Ver Advocaciones</span>
+                        <ChevronRight
+                            size={20}
+                            class="ml-2 transition-transform group-hover:translate-x-2"
+                        />
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
+</Layout>
