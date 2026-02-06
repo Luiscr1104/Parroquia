@@ -1,0 +1,55 @@
+---
+import { Image } from "astro:assets";
+import ArtisanalIcon from "./ArtisanalIcon.astro";
+
+interface Props {
+    slug: string;
+    title: string;
+    image: string;
+    description: string;
+    className?: string;
+}
+
+const { slug, title, image, description, className = "" } = Astro.props;
+---
+
+<a
+    href={`/santos/${slug}`}
+    class={`glass-card rounded-[2.5rem] overflow-hidden flex flex-col h-full group ${className} block transition-all duration-500`}
+>
+    <div class="relative h-64 overflow-hidden">
+        <Image
+            src={image as any}
+            alt={title}
+            width={800}
+            height={600}
+            class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110"
+        />
+        <div
+            class="absolute inset-0 bg-gradient-to-t from-deep-blue/60 to-transparent opacity-60"
+        >
+        </div>
+        <div class="absolute bottom-6 left-6 right-6">
+            <h3
+                class="text-2xl font-display font-bold text-parchment leading-tight"
+            >
+                {title}
+            </h3>
+        </div>
+    </div>
+    <div class="p-8 flex-grow flex flex-col">
+        <p
+            class="text-deep-blue/70 font-body text-sm leading-relaxed line-clamp-4 group-hover:text-deep-blue/90 transition-all duration-300"
+        >
+            {description}
+        </p>
+        <div class="mt-6 pt-6 border-t border-gold/10 flex justify-end">
+            <div
+                class="text-gold-dark font-bold text-xs uppercase tracking-widest flex items-center group-hover:translate-x-1 transition-transform"
+            >
+                <span>Leer más</span>
+                <ArtisanalIcon name="arrow-right" size={16} class="ml-2" />
+            </div>
+        </div>
+    </div>
+</a>

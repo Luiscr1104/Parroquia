@@ -1,6 +1,5 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import { ChevronRight } from "lucide-astro";
 import ArtisanalIcon from "../../components/ArtisanalIcon.astro";
 import SectionHeader from "../../components/SectionHeader.astro";
 
@@ -19,100 +18,158 @@ const featuredAdvocations = [
 ---
 
 <Layout
-    title="María, Madre Nuestra"
+    title="María, Madre Nuestra | Devoción y Gracia"
     description="Sección dedicada a la Virgen María, sus advocaciones y dogmas."
 >
-    <!-- hero section -->
+    <!-- refined ornamental header (no photo) -->
     <section
-        class="h-[60vh] relative flex items-center justify-center overflow-hidden bg-deep-blue"
+        class="relative py-40 bg-parchment overflow-hidden border-b border-gold/10"
     >
+        <!-- background ornaments -->
         <div
-            class="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1548625361-195fe5795df5?q=80&w=1600')] bg-cover bg-center"
+            class="absolute top-0 right-0 w-1/3 h-full opacity-5 pointer-events-none overflow-hidden"
         >
+            <div class="absolute -top-20 -right-20 animate-sacred-float">
+                <ArtisanalIcon name="heart" size={500} />
+            </div>
         </div>
         <div
-            class="absolute inset-0 bg-gradient-to-b from-deep-blue/60 to-deep-blue"
+            class="absolute bottom-0 left-0 w-1/3 h-full opacity-5 pointer-events-none overflow-hidden"
         >
+            <div class="absolute -bottom-20 -left-20 animate-sacred-float-alt">
+                <ArtisanalIcon name="sparkle" size={400} />
+            </div>
         </div>
 
-        <div class="relative z-10 text-center px-4">
-            <h2 class="text-gold font-body text-xl italic mb-4">
-                "A Jesús por María"
-            </h2>
-            <h1
-                class="text-6xl md:text-8xl font-display font-bold text-parchment leading-tight"
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-20">
+            <SectionHeader
+                tag="Madre de la Iglesia"
+                title="María, Madre Nuestra"
+                subtitle="Explore la devoción, los dogmas y las diversas advocaciones de nuestra Madre Santísima."
+            />
+
+            <div
+                class="flex justify-center mt-12 animate-sacred-in"
+                style="animation-delay: 0.2s;"
             >
-                María
-            </h1>
-            <p class="text-parchment/70 max-w-lg mx-auto mt-6">
-                Explora la vida, dogmas y las hermosas advocaciones de nuestra
-                Madre Santísima.
-            </p>
+                <p
+                    class="text-xl text-gold-dark max-w-2xl text-center font-body italic"
+                >
+                    "Adelante con María, a Jesús por ella."
+                </p>
+            </div>
         </div>
     </section>
 
     <!-- navigation tiles -->
-    <section class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <!-- dogmas card -->
-            <a
-                href="/maria/dogmas"
-                class="group relative h-96 rounded-3xl overflow-hidden sacred-border flex items-end p-10 bg-parchment-dark shadow-xl hover:-translate-y-2 transition-all duration-500"
-            >
-                <div
-                    class="absolute top-10 right-10 text-gold-dark/10 group-hover:text-gold-dark/20 transition-colors"
-                >
-                    <ArtisanalIcon name="cross" size={180} />
-                </div>
-                <div class="relative z-10">
-                    <h3
-                        class="text-4xl font-display font-bold text-deep-blue mb-4"
-                    >
-                        Dogmas Marianos
-                    </h3>
-                    <p class="text-deep-blue/60 mb-6 max-w-sm">
-                        Las cuatro verdades de fe sobre la Virgen María
-                        propuestas por la Iglesia.
-                    </p>
-                    <div class="flex items-center text-gold-dark font-bold">
-                        <span>Explorar Dogmas</span>
-                        <ChevronRight
-                            size={20}
-                            class="ml-2 transition-transform group-hover:translate-x-2"
-                        />
-                    </div>
-                </div>
-            </a>
+    <section class="py-32 bg-parchment relative overflow-hidden">
+        <!-- background ornament -->
+        <div
+            class="absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/2 opacity-[0.03] pointer-events-none"
+        >
+            <ArtisanalIcon name="heart" size={800} />
+        </div>
 
-            <!-- advocations card -->
-            <a
-                href="/maria/advocaciones"
-                class="group relative h-96 rounded-3xl overflow-hidden sacred-border flex items-end p-10 bg-deep-blue text-parchment shadow-xl hover:-translate-y-2 transition-all duration-500"
-            >
-                <div
-                    class="absolute top-10 right-10 text-gold/5 group-hover:text-gold/10 transition-colors"
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- dogmas card -->
+                <a
+                    href="/maria/dogmas"
+                    class="group relative h-[30rem] rounded-[3.5rem] overflow-hidden sacred-border flex items-end p-12 bg-parchment-dark shadow-xl hover:-translate-y-3 transition-all duration-700 hover:shadow-glass-hover"
                 >
-                    <ArtisanalIcon name="heart" size={180} />
-                </div>
-                <div class="relative z-10">
-                    <h3
-                        class="text-4xl font-display font-bold text-parchment mb-4"
+                    <div
+                        class="absolute top-12 right-12 text-gold-dark/5 group-hover:text-gold-dark/15 group-hover:scale-110 group-hover:rotate-6 transition-all duration-1000"
                     >
-                        Advocaciones
-                    </h3>
-                    <p class="text-parchment/60 mb-6 max-w-sm">
-                        Historias y devociones marianas que han florecido en
-                        todo el mundo.
-                    </p>
-                    <div class="flex items-center text-gold font-bold">
-                        <span>Ver Advocaciones</span>
-                        <ChevronRight
-                            size={20}
-                            class="ml-2 transition-transform group-hover:translate-x-2"
-                        />
+                        <ArtisanalIcon name="cross" size={240} />
                     </div>
-                </div>
-            </a>
+                    <div class="relative z-10">
+                        <div
+                            class="w-14 h-14 rounded-2xl bg-gold/10 flex items-center justify-center mb-8 border border-gold/20 group-hover:rotate-6 transition-transform"
+                        >
+                            <ArtisanalIcon
+                                name="book-open"
+                                size={28}
+                                weight="duotone"
+                                class="text-gold-dark"
+                            />
+                        </div>
+                        <h3
+                            class="text-4xl font-display font-bold text-deep-blue mb-6"
+                        >
+                            Dogmas Marianos
+                        </h3>
+                        <p
+                            class="text-deep-blue/60 mb-8 max-w-sm italic leading-relaxed"
+                        >
+                            Las cuatro verdades eternas sobre nuestra Madre
+                            reconocidas por la fe milenaria.
+                        </p>
+                        <div
+                            class="flex items-center text-gold-dark font-bold text-xs uppercase tracking-[0.2em]"
+                        >
+                            <span>Profundizar</span>
+                            <ArtisanalIcon
+                                name="arrow-right"
+                                size={16}
+                                class="ml-3 transition-transform group-hover:translate-x-3"
+                            />
+                        </div>
+                    </div>
+                </a>
+
+                <!-- advocations card -->
+                <a
+                    href="/maria/advocaciones"
+                    class="group relative h-[30rem] rounded-[3.5rem] overflow-hidden sacred-border flex items-end p-12 bg-deep-blue text-parchment shadow-xl hover:-translate-y-3 transition-all duration-700 hover:shadow-2xl"
+                >
+                    <div
+                        class="absolute top-12 right-12 text-gold/5 group-hover:text-gold/15 group-hover:scale-110 group-hover:-rotate-6 transition-all duration-1000"
+                    >
+                        <ArtisanalIcon name="heart" size={240} />
+                    </div>
+                    <div class="relative z-10">
+                        <div
+                            class="w-14 h-14 rounded-2xl bg-gold/10 flex items-center justify-center mb-8 border border-gold/20 group-hover:-rotate-6 transition-transform"
+                        >
+                            <ArtisanalIcon
+                                name="sparkle"
+                                size={28}
+                                weight="duotone"
+                                class="text-gold"
+                            />
+                        </div>
+                        <h3
+                            class="text-4xl font-display font-bold text-parchment mb-6"
+                        >
+                            Advocaciones
+                        </h3>
+                        <p
+                            class="text-parchment/60 mb-8 max-w-sm italic leading-relaxed text-lg"
+                        >
+                            Diversas manifestaciones de un mismo amor maternal
+                            alrededor del mundo.
+                        </p>
+                        <div
+                            class="flex items-center text-gold font-bold text-xs uppercase tracking-[0.2em]"
+                        >
+                            <span>Descubrir</span>
+                            <ArtisanalIcon
+                                name="arrow-right"
+                                size={16}
+                                class="ml-3 transition-transform group-hover:translate-x-3"
+                            />
+                        </div>
+                    </div>
+                </a>
+            </div>
         </div>
     </section>
 </Layout>
+
+<style>
+    .shadow-glass-hover {
+        box-shadow:
+            0 20px 60px 0 rgba(0, 0, 0, 0.1),
+            0 0 40px 0 rgba(212, 175, 55, 0.05);
+    }
+</style>

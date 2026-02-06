@@ -1,122 +1,199 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import ArtisanalIcon from "../../components/ArtisanalIcon.astro";
-import { ChevronRight } from "lucide-astro";
 import SectionHeader from "../../components/SectionHeader.astro";
 
 const news = [
     {
-        title: "Fiestas Patronales Peñas Blancas 2026",
-        date: "15 Feb, 2026",
-        category: "Eventos",
+        title: "Inicia la Catequesis 2024",
+        date: "15 Feb, 2024",
+        category: "Avisos",
         excerpt:
-            "Estamos a las puertas de celebrar nuestras fiestas en honor al Sagrado Corazón. Conozca el calendario de actividades religiosas y culturales...",
-        image: "https://images.unsplash.com/photo-1438032005730-c779502df39b?q=80&w=800",
-    },
-    {
-        title: "Nueva Catequesis para Adultos",
-        date: "10 Feb, 2026",
-        category: "Formación",
-        excerpt:
-            "Iniciamos un nuevo proceso de formación para adultos que deseen completar sus sacramentos o profundizar en su fe. Inscripciones abiertas...",
+            "Invitamos a todos los padres de familia a inscribir a sus hijos en los diversos niveles de formación...",
         image: "https://images.unsplash.com/photo-1544427920-c49ccfb85579?q=80&w=800",
     },
     {
-        title: "Campaña de Ayuda Social: Cuaresma",
-        date: "01 Feb, 2026",
-        category: "Social",
+        title: "Gran Turno Parroquial",
+        date: "20 Feb, 2024",
+        category: "Eventos",
         excerpt:
-            "Este tiempo de Cuaresma nos invita a la caridad. Estaremos recolectando alimentos no perecederos para las familias más necesitadas de nuestra parroquia...",
-        image: "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?q=80&w=800",
+            "Acompáñanos este fin de semana en nuestra actividad pro-fondos para las obras parroquiales...",
+        image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=800",
+    },
+    {
+        title: "Nueva Iluminación del Templo",
+        date: "10 Feb, 2024",
+        category: "Obras",
+        excerpt:
+            "Gracias a su generosidad hemos completado la primera fase de la renovación del sistema eléctrico...",
+        image: "https://images.unsplash.com/photo-1548625361-195fe5795df5?q=80&w=800",
     },
 ];
 ---
 
 <Layout
-    title="Noticias y Anuncios"
-    description="Manténgase informado sobre las actividades, fiestas patronales y avisos de nuestra parroquia."
+    title="Noticias y Eventos | Parroquia San Isidro"
+    description="Manténgase informado sobre las últimas noticias, eventos y avisos de nuestra comunidad parroquial."
 >
-    <section class="py-24 bg-parchment overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <SectionHeader
-                tag="Actualidad Parroquial"
-                title="Noticias y Avisos"
-            />
+    <!-- refined ornamental header (no photo) -->
+    <section
+        class="relative py-40 bg-parchment overflow-hidden border-b border-gold/10"
+    >
+        <!-- background ornaments -->
+        <div
+            class="absolute top-0 right-0 w-1/3 h-full opacity-5 pointer-events-none overflow-hidden"
+        >
+            <div class="absolute -top-20 -right-20 animate-sacred-float">
+                <ArtisanalIcon name="megaphone" size={500} />
+            </div>
+        </div>
+        <div
+            class="absolute bottom-0 left-0 w-1/3 h-full opacity-5 pointer-events-none overflow-hidden"
+        >
+            <div class="absolute -bottom-20 -left-20 animate-sacred-float-alt">
+                <ArtisanalIcon name="quotes" size={400} />
+            </div>
+        </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-20">
+            <SectionHeader
+                tag="Eco de la Comunidad"
+                title="Noticias de Nuestra Casa"
+                subtitle="Manténgase conectado con la vida de nuestra parroquia a través de los últimos avisos, eventos y obras."
+            />
+        </div>
+    </section>
+
+    <!-- news grid -->
+    <section class="py-32 bg-parchment relative overflow-hidden">
+        <!-- background ornament -->
+        <div
+            class="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/2 opacity-[0.03] pointer-events-none"
+        >
+            <ArtisanalIcon name="quotes" size={600} />
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
                 {
-                    news.map((item) => (
-                        <article class="bg-parchment-dark rounded-3xl overflow-hidden sacred-border flex flex-col group hover:shadow-2xl transition-all duration-500">
+                    (news as any[]).map((item, index) => (
+                        <div
+                            class="glass-card rounded-[3.5rem] overflow-hidden flex flex-col group hover:-translate-y-3 transition-all duration-700 hover:shadow-glass-hover animate-sacred-in"
+                            style={`animation-delay: ${index * 0.1}s`}
+                        >
                             <div class="h-64 overflow-hidden relative">
                                 <img
                                     src={item.image}
                                     alt={item.title}
-                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
                                 />
-                                <div class="absolute top-4 right-4 bg-gold px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest text-parchment">
-                                    {item.category}
+                                <div class="absolute inset-x-6 bottom-6">
+                                    <span class="bg-gold text-deep-blue text-[10px] font-bold uppercase tracking-[0.2em] px-4 py-1.5 rounded-full shadow-lg">
+                                        {item.category}
+                                    </span>
                                 </div>
                             </div>
-                            <div class="p-8 flex-grow space-y-4">
-                                <div class="flex items-center text-deep-blue/40 text-xs font-bold space-x-2">
+                            <div class="p-10 flex-grow flex flex-col">
+                                <div class="flex items-center text-gold-dark/60 text-[10px] font-bold uppercase tracking-[0.1em] mb-6">
                                     <ArtisanalIcon
                                         name="calendar-blank"
                                         size={14}
+                                        class="mr-2"
+                                        weight="duotone"
                                     />
                                     <span>{item.date}</span>
                                 </div>
-                                <h3 class="text-2xl font-display font-bold text-deep-blue group-hover:text-gold-dark transition-colors">
+                                <h3 class="text-2xl font-display font-bold text-deep-blue mb-6 group-hover:text-gold-dark transition-colors leading-tight">
                                     {item.title}
                                 </h3>
-                                <p class="text-sm text-deep-blue/60 leading-relaxed line-clamp-3 italic">
+                                <p class="text-deep-blue/60 text-sm leading-relaxed mb-8 font-body flex-grow">
                                     {item.excerpt}
                                 </p>
-                                <div class="pt-4 flex items-center text-gold-dark font-bold text-sm">
-                                    <span>Leer noticia completa</span>
-                                    <ChevronRight
-                                        size={16}
-                                        class="ml-1 group-hover:translate-x-1 transition-transform"
+                                <div class="pt-6 border-t border-gold/10 flex items-center justify-between group/link">
+                                    <span class="text-gold-dark text-xs font-bold uppercase tracking-[0.2em]">
+                                        Leer noticia
+                                    </span>
+                                    <ArtisanalIcon
+                                        name="arrow-right"
+                                        size={18}
+                                        class="text-gold/40 group-hover/link:translate-x-3 transition-transform"
                                     />
                                 </div>
                             </div>
-                        </article>
+                        </div>
                     ))
                 }
             </div>
 
-            <!-- newsletter / subscribe callout -->
+            <!-- newsletter -->
             <div
-                class="mt-24 p-12 bg-deep-blue rounded-[3rem] text-center relative overflow-hidden"
+                class="mt-32 relative rounded-[4rem] overflow-hidden group animate-sacred-in"
             >
+                <div class="absolute inset-0 bg-deep-blue"></div>
                 <div
-                    class="absolute inset-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1548625361-195fe5795df5?q=80&w=1200')] bg-cover"
+                    class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 mix-blend-overlay"
                 >
                 </div>
-                <div class="relative z-10">
+                <!-- ornate icons -->
+                <div
+                    class="absolute -top-20 -left-20 text-gold/5 group-hover:scale-110 group-hover:rotate-12 transition-all duration-1000"
+                >
+                    <ArtisanalIcon name="bell-ringing" size={400} />
+                </div>
+
+                <div
+                    class="relative p-16 md:p-24 flex flex-col items-center text-center max-w-4xl mx-auto"
+                >
+                    <ArtisanalIcon
+                        name="envelope-open"
+                        size={48}
+                        weight="duotone"
+                        class="text-gold mb-10"
+                    />
                     <h2
-                        class="text-3xl md:text-4xl font-display font-bold text-gold mb-6"
+                        class="text-4xl md:text-5xl font-display font-bold text-gold mb-8"
                     >
-                        ¿Desea recibir avisos en su correo?
+                        Voz de la Parroquia
                     </h2>
-                    <p class="text-parchment/60 max-w-xl mx-auto mb-10">
-                        Suscríbase a nuestro boletín semanal para no perderse
-                        ninguna actividad de nuestra comunidad.
+                    <p
+                        class="text-xl text-parchment/60 font-body italic mb-12 max-w-2xl leading-relaxed"
+                    >
+                        Suscríbase para recibir los avisos parroquiales, el
+                        boletín dominical y las últimas noticias directamente en
+                        su correo.
                     </p>
-                    <div
-                        class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto"
+
+                    <form
+                        class="w-full max-w-lg flex flex-col sm:flex-row gap-4 p-2 bg-parchment/5 backdrop-blur-md rounded-3xl border border-parchment/10 focus-within:border-gold/30 transition-all duration-500"
                     >
                         <input
                             type="email"
-                            placeholder="Su correo electrónico"
-                            class="flex-grow px-6 py-4 rounded-xl bg-parchment/5 border border-parchment/10 text-parchment focus:outline-none focus:border-gold transition-colors"
+                            placeholder="Tu correo electrónico"
+                            class="flex-grow bg-transparent border-none focus:ring-0 text-parchment px-6 py-4 placeholder:text-parchment/30"
+                            required
                         />
                         <button
-                            class="px-8 py-4 bg-gold hover:bg-gold-dark text-parchment font-bold rounded-xl transition-colors"
-                            >Suscribirse</button
+                            type="submit"
+                            class="bg-gold hover:bg-gold-light text-deep-blue font-bold px-10 py-4 rounded-2xl transition-all duration-500 shadow-xl active:scale-95"
                         >
-                    </div>
+                            Suscribirme
+                        </button>
+                    </form>
+                    <p
+                        class="text-[10px] text-parchment/30 mt-8 uppercase tracking-[0.2em] font-bold"
+                    >
+                        Unimos fe y comunidad en la red
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 </Layout>
+
+<style>
+    .shadow-glass-hover {
+        box-shadow:
+            0 20px 60px 0 rgba(0, 0, 0, 0.1),
+            0 0 40px 0 rgba(212, 175, 55, 0.05);
+    }
+</style>

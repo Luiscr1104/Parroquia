@@ -26,34 +26,49 @@ const sections = [
 ---
 
 <footer
-    class="bg-deep-blue text-parchment/90 pt-16 pb-8 border-t-4 border-gold"
+    class="bg-deep-blue text-parchment/90 pt-24 pb-12 relative overflow-hidden"
 >
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- background ornaments -->
+    <div
+        class="absolute bottom-0 right-0 opacity-5 pointer-events-none translate-x-1/4 translate-y-1/4"
+    >
+        <ArtisanalIcon name="cross" size={600} weight="thin" />
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div
-            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16"
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-24"
         >
             <!-- branding column -->
-            <div class="space-y-6">
-                <div class="flex items-center space-x-3 text-gold">
-                    <ArtisanalIcon name="cross" size={32} weight="bold" />
-                    <span class="text-2xl font-display font-bold tracking-tight"
+            <div class="space-y-8">
+                <a href="/" class="flex items-center space-x-4 group">
+                    <div
+                        class="w-12 h-12 rounded-xl bg-gold flex items-center justify-center text-parchment shadow-lg group-hover:scale-110 transition-transform"
+                    >
+                        <ArtisanalIcon name="cross" size={28} weight="bold" />
+                    </div>
+                    <span
+                        class="text-3xl font-display font-bold tracking-tight text-parchment"
                         >Peñas Blancas</span
                     >
-                </div>
-                <p class="text-sm leading-relaxed text-parchment/70 max-w-xs">
-                    Sirviendo a la comunidad de Peñas Blancas con amor y fe,
-                    llevando la palabra de Dios a cada rincón de nuestras
-                    filiales.
+                </a>
+                <p
+                    class="text-base leading-relaxed text-parchment/60 max-w-xs font-body italic"
+                >
+                    "Llevando la luz de Cristo a cada corazón en nuestra
+                    comunidad desde hace décadas."
                 </p>
-                <div class="flex space-x-4">
+                <div class="flex space-x-5">
                     <a
                         href="#"
-                        class="text-parchment/50 hover:text-gold transition-colors"
+                        class="w-10 h-10 rounded-full bg-parchment/10 flex items-center justify-center text-parchment/50 hover:bg-gold hover:text-deep-blue transition-all"
+                        aria-label="Facebook"
                         ><ArtisanalIcon name="facebook-logo" size={20} /></a
                     >
                     <a
                         href="#"
-                        class="text-parchment/50 hover:text-gold transition-colors"
+                        class="w-10 h-10 rounded-full bg-parchment/10 flex items-center justify-center text-parchment/50 hover:bg-gold hover:text-deep-blue transition-all"
+                        aria-label="Instagram"
                         ><ArtisanalIcon name="instagram-logo" size={20} /></a
                     >
                 </div>
@@ -61,19 +76,20 @@ const sections = [
 
             <!-- quick links -->
             {
-                sections.map((section) => (
+                (sections as any[]).map((section) => (
                     <div>
-                        <h3 class="text-gold font-display font-semibold text-lg mb-6">
+                        <h3 class="text-gold font-display font-bold text-xl mb-8 tracking-wide">
                             {section.title}
                         </h3>
-                        <ul class="space-y-4">
-                            {section.links.map((link) => (
+                        <ul class="space-y-5">
+                            {(section.links as any[]).map((link) => (
                                 <li>
                                     <a
                                         href={link.href}
-                                        class="text-sm hover:text-gold hover:translate-x-1 inline-block transition-all"
+                                        class="text-parchment/70 hover:text-gold hover:translate-x-2 flex items-center space-x-2 transition-all group"
                                     >
-                                        {link.name}
+                                        <div class="w-1.5 h-1.5 rounded-full bg-gold/0 group-hover:bg-gold transition-all" />
+                                        <span>{link.name}</span>
                                     </a>
                                 </li>
                             ))}
@@ -84,46 +100,68 @@ const sections = [
 
             <!-- contact -->
             <div>
-                <h3 class="text-gold font-display font-semibold text-lg mb-6">
+                <h3
+                    class="text-gold font-display font-bold text-xl mb-8 tracking-wide"
+                >
                     Contacto
                 </h3>
-                <ul class="space-y-4">
-                    <li class="flex items-start space-x-3 text-sm">
-                        <ArtisanalIcon
-                            name="map-pin"
-                            size={18}
-                            class="text-gold shrink-0 mt-0.5"
-                        />
-                        <span>Peñas Blancas, San Ramón, Costa Rica</span>
+                <ul class="space-y-6">
+                    <li class="flex items-start space-x-4 text-parchment/70">
+                        <div
+                            class="w-8 h-8 rounded-lg bg-gold/10 flex items-center justify-center text-gold shrink-0"
+                        >
+                            <ArtisanalIcon
+                                name="map-pin"
+                                size={18}
+                                weight="regular"
+                            />
+                        </div>
+                        <span class="text-sm"
+                            >Peñas Blancas, San Ramón, Costa Rica</span
+                        >
                     </li>
-                    <li class="flex items-center space-x-3 text-sm">
-                        <ArtisanalIcon
-                            name="phone"
-                            size={18}
-                            class="text-gold shrink-0"
-                        />
-                        <span>+506 2460-0000</span>
+                    <li class="flex items-center space-x-4 text-parchment/70">
+                        <div
+                            class="w-8 h-8 rounded-lg bg-gold/10 flex items-center justify-center text-gold shrink-0"
+                        >
+                            <ArtisanalIcon
+                                name="phone"
+                                size={18}
+                                weight="regular"
+                            />
+                        </div>
+                        <span class="text-sm">+506 2460-1234</span>
                     </li>
-                    <li class="flex items-center space-x-3 text-sm">
-                        <ArtisanalIcon
-                            name="envelope"
-                            size={18}
-                            class="text-gold shrink-0"
-                        />
-                        <span>info@parroquiapenasblancas.com</span>
+                    <li class="flex items-center space-x-4 text-parchment/70">
+                        <div
+                            class="w-8 h-8 rounded-lg bg-gold/10 flex items-center justify-center text-gold shrink-0"
+                        >
+                            <ArtisanalIcon
+                                name="envelope"
+                                size={18}
+                                weight="regular"
+                            />
+                        </div>
+                        <span class="text-sm"
+                            >info@parroquiapenasblancas.com</span
+                        >
                     </li>
                 </ul>
             </div>
         </div>
 
-        <div class="pt-8 border-t border-parchment/10 text-center">
-            <p class="text-xs text-parchment/40">
-                &copy; {currentYear} Parroquia de Peñas Blancas. Todos los derechos
-                reservados. <br class="sm:hidden" />
-                <span class="hidden sm:inline">|</span> Un diseño con propósito por
+        <div
+            class="pt-12 border-t border-parchment/10 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-sm"
+        >
+            <p class="text-parchment/40">
+                &copy; {currentYear} Parroquia de Peñas Blancas.
+            </p>
+            <p class="text-parchment/40">
+                Un diseño con propósito por
                 <a
                     href="https://luisroberto.dev"
-                    class="text-gold/60 hover:text-gold transition-colors font-bold"
+                    target="_blank"
+                    class="text-gold/60 hover:text-gold transition-colors font-bold underline underline-offset-4 decoration-gold/20 hover:decoration-gold/50"
                     >luisroberto.dev</a
                 >
             </p>

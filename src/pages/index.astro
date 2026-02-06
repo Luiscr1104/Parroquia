@@ -1,8 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { ChevronRight } from "lucide-astro";
 import SectionHeader from "../components/SectionHeader.astro";
 import ArtisanalIcon from "../components/ArtisanalIcon.astro";
+import { Image } from "astro:assets";
 
 const featuredSections = [
 	{
@@ -27,119 +27,201 @@ const featuredSections = [
 ---
 
 <Layout
-	title="Bienvenido"
-	description="Sitio oficial de la Parroquia de Peñas Blancas. Comunidad de fe, esperanza y caridad."
+	title="Parroquia San Isidro Labrador"
+	description="Sitio oficial de la Parroquia de San Isidro Labrador. Comunidad de fe, esperanza y caridad."
 >
 	<!-- hero -->
 	<section
-		class="min-h-screen relative flex items-center justify-center pt-20"
+		class="min-h-screen relative flex items-center justify-center pt-20 overflow-hidden"
 	>
 		<div class="absolute inset-0 z-0">
-			<img
+			<Image
 				src="/images/hero/church_interior.png"
 				alt="Interior majestuoso de la Parroquia"
+				width={1920}
+				height={1080}
+				quality="high"
 				class="w-full h-full object-cover"
 			/>
 			<div
-				class="absolute inset-0 bg-gradient-to-b from-deep-blue/80 via-deep-blue/60 to-parchment"
+				class="absolute inset-0 bg-gradient-to-b from-deep-blue/90 via-deep-blue/40 to-parchment"
+			>
+			</div>
+			<!-- grain overlay -->
+			<div
+				class="absolute inset-0 opacity-20 pointer-events-none mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"
 			>
 			</div>
 		</div>
 
-		<div
-			class="relative z-10 max-w-7xl mx-auto px-4 text-center animate-sacred-in"
-		>
+		<div class="relative z-10 max-w-7xl mx-auto px-4 text-center">
 			<div
-				class="inline-flex items-center space-x-3 bg-gold/20 backdrop-blur-sm border border-gold/30 px-6 py-2 rounded-full mb-8"
+				class="inline-flex items-center space-x-3 bg-parchment/10 backdrop-blur-md border border-parchment/20 px-6 py-2 rounded-full mb-8 animate-sacred-in shadow-glass"
 			>
 				<ArtisanalIcon
-					name="cross"
+					name="crown"
 					weight="bold"
 					size={16}
 					class="text-gold"
 				/>
 				<span
-					class="text-xs uppercase tracking-[0.3em] font-bold text-gold-light"
-					>Comunidad de Fe</span
+					class="text-xs uppercase tracking-[0.3em] font-bold text-parchment"
+					>Parroquia San Isidro</span
 				>
 			</div>
 
 			<h1
-				class="text-6xl md:text-8xl font-display font-bold text-parchment mb-8 leading-tight"
+				class="text-6xl md:text-9xl font-display font-bold text-parchment mb-8 leading-[0.9] tracking-tighter animate-sacred-in"
+				style="animation-delay: 0.2s;"
 			>
-				Parroquia <br />
-				<span class="gold-gradient">Peñas Blancas</span>
+				Comunidad <br />
+				<span class="gold-gradient">de Fe</span>
 			</h1>
 
 			<p
-				class="text-xl md:text-2xl text-parchment/80 font-body italic max-w-2xl mx-auto mb-12"
+				class="text-xl md:text-2xl text-parchment/90 font-body italic max-w-3xl mx-auto mb-16 leading-relaxed animate-sacred-in"
+				style="animation-delay: 0.4s;"
 			>
-				"Donde la fe florece y la comunidad se une en el amor de
-				Cristo."
+				"Descubre la historia y devoción de nuestra parroquia a través
+				de sus santos, capillas y grupos de fe."
 			</p>
 
-			<div class="flex flex-col sm:flex-row gap-6 justify-center">
+			<div
+				class="flex flex-col sm:flex-row gap-6 justify-center animate-sacred-in"
+				style="animation-delay: 0.6s;"
+			>
 				<a
 					href="/filiales"
-					class="px-10 py-5 bg-gold hover:bg-gold-dark text-parchment font-bold rounded-2xl transition-all shadow-xl hover:-translate-y-1"
+					class="px-12 py-6 bg-gold hover:bg-gold-dark text-deep-blue font-bold rounded-full transition-all shadow-2xl hover:scale-105 active:scale-95 group"
 				>
-					Nuestras Filiales
+					<span class="relative z-10">Nuestras Filiales</span>
 				</a>
 				<a
 					href="/maria"
-					class="px-10 py-5 bg-parchment/10 backdrop-blur-md border border-parchment/30 text-parchment hover:bg-parchment hover:text-deep-blue font-bold rounded-2xl transition-all shadow-xl hover:-translate-y-1"
+					class="px-12 py-6 bg-parchment/10 backdrop-blur-xl border border-parchment/30 text-parchment hover:bg-parchment hover:text-deep-blue font-bold rounded-full transition-all shadow-2xl hover:scale-105 active:scale-95"
 				>
 					Sección de María
 				</a>
 			</div>
 		</div>
+
+		<!-- scroll indicator -->
+		<div
+			class="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce opacity-50"
+		>
+			<ArtisanalIcon
+				name="caret-double-down"
+				size={24}
+				class="text-parchment"
+				weight="light"
+			/>
+		</div>
 	</section>
 
 	<!-- welcoming section -->
-	<section class="py-32 bg-parchment relative overflow-hidden">
-		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-			<div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-				<div class="relative">
+	<section class="py-40 bg-parchment relative overflow-hidden">
+		<!-- decorative cross background -->
+		<div
+			class="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/3 opacity-[0.03] pointer-events-none"
+		>
+			<ArtisanalIcon name="cross" size={800} />
+		</div>
+
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
+				<div class="relative group">
 					<div
-						class="absolute -top-10 -left-10 w-40 h-40 bg-gold/5 rounded-full blur-3xl"
+						class="absolute -inset-4 bg-gold/5 rounded-[4rem] blur-2xl group-hover:bg-gold/10 transition-colors duration-700"
 					>
 					</div>
-					<img
-						src="/images/maria/virgen_angeles.png"
-						alt="Nuestra Señora de los Ángeles"
-						class="rounded-[3rem] sacred-border shadow-2xl relative z-10"
-					/>
+					<div
+						class="relative overflow-hidden rounded-[3.5rem] sacred-border shadow-2xl transform transition-transform duration-700 hover:scale-[1.02]"
+					>
+						<Image
+							src="/images/maria/virgen_angeles.png"
+							alt="Nuestra Señora de los Ángeles"
+							width={800}
+							height={1000}
+							class="w-full h-full object-cover"
+						/>
+						<div
+							class="absolute inset-0 bg-gradient-to-t from-deep-blue/40 to-transparent"
+						>
+						</div>
+					</div>
+					<!-- decorative floaties -->
+					<div
+						class="absolute -top-10 -right-10 animate-sacred-float"
+					>
+						<ArtisanalIcon
+							name="star"
+							size={80}
+							class="text-gold/20"
+						/>
+					</div>
 				</div>
 
-				<div class="space-y-8">
+				<div class="space-y-12">
 					<SectionHeader
 						tag="Bienvenidos"
-						title="Una casa de oración para todos."
-						subtitle="Nuestra parroquia es más que un edificio; es un cuerpo vivo de creyentes que buscan seguir los pasos de Jesús en nuestra hermosa tierra de Peñas Blancas. Aquí encontrarás un espacio para el encuentro con Dios y con tus hermanos."
+						title="Una casa de oración para todos"
+						subtitle="Nuestra parroquia es el cuerpo vivo de creyentes que buscan seguir los pasos de Jesús en Peñas Blancas. Un espacio sagrado para el encuentro con Dios y la comunidad."
 						align="left"
 					/>
-					<ul class="space-y-4 pt-4">
+
+					<div class="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-4">
 						{
-							[
-								"Santa Misa Diaria",
-								"Confesiones",
-								"Formación de Fe",
-								"Atención Social",
-							].map((item) => (
-								<li class="flex items-center space-x-3 text-deep-blue/80 font-medium">
-									<div class="w-2 h-2 rounded-full bg-gold" />
-									<span>{item}</span>
-								</li>
+							(
+								[
+									{
+										title: "Santa Misa Diaria",
+										desc: "Momentos de comunión diaria.",
+										icon: "hands-praying",
+									},
+									{
+										title: "Confesiones",
+										desc: "Reconciliación y paz interior.",
+										icon: "cross",
+									},
+									{
+										title: "Formación de Fe",
+										desc: "Crecimiento espiritual continuo.",
+										icon: "book-open",
+									},
+									{
+										title: "Atención Social",
+										desc: "Amor en acción por el prójimo.",
+										icon: "heart",
+									},
+								] as any[]
+							).map((item) => (
+								<div class="flex items-start space-x-4 group p-4 rounded-2xl hover:bg-gold/5 transition-colors">
+									<div class="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center text-gold shrink-0 group-hover:scale-110 transition-transform">
+										<ArtisanalIcon
+											name={item.icon as any}
+											size={24}
+											weight="duotone"
+										/>
+									</div>
+									<div>
+										<h4 class="font-display font-bold text-deep-blue group-hover:text-gold-dark transition-colors">
+											{item.title}
+										</h4>
+										<p class="text-xs text-deep-blue/50 font-body italic">
+											{item.desc}
+										</p>
+									</div>
+								</div>
 							))
 						}
-					</ul>
+					</div>
 				</div>
 			</div>
 		</div>
 	</section>
 
 	<!-- quick links grid -->
-	<section class="py-32 bg-parchment-dark relative overflow-hidden">
+	<section class="py-40 bg-parchment-dark relative overflow-hidden">
 		<!-- subtle background ornament -->
 		<div
 			class="absolute top-0 left-1/2 -translate-x-1/2 opacity-5 pointer-events-none"
@@ -154,47 +236,49 @@ const featuredSections = [
 				subtitle="Diferentes maneras de vivir tu espiritualidad y compromiso con la comunidad en nuestra parroquia."
 			/>
 
-			<div class="grid grid-cols-1 md:grid-cols-3 gap-8 pt-10">
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-10 pt-16">
 				{
-					featuredSections.map((section) => (
+					(featuredSections as any[]).map((section, index) => (
 						<a
 							href={section.href}
-							class="group relative flex flex-col p-1 bg-parchment rounded-[2rem] sacred-border overflow-hidden transition-all duration-700 hover:-translate-y-2 hover:shadow-2xl"
+							class="group relative flex flex-col p-1 bg-parchment rounded-[2.5rem] sacred-border overflow-hidden transition-all duration-700 hover:-translate-y-3 hover:shadow-glass-hover"
+							style={`animation-delay: ${index * 0.1}s`}
 						>
-							<div class="absolute inset-0 bg-gradient-to-br from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+							<div class="absolute inset-0 bg-gradient-to-br from-gold/10 via-transparent to-deep-blue/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
-							<div class="relative z-10 p-10 flex flex-col h-full bg-parchment/40 backdrop-blur-sm rounded-[1.8rem]">
-								<div class="w-16 h-16 rounded-2xl bg-parchment border border-gold/20 flex items-center justify-center mb-8 shadow-sm group-hover:border-gold group-hover:shadow-gold/20 transition-all duration-500">
+							<div class="relative z-10 p-12 flex flex-col h-full bg-parchment/60 backdrop-blur-md rounded-[2.3rem]">
+								<div class="w-20 h-20 rounded-[1.5rem] bg-parchment border border-gold/10 flex items-center justify-center mb-10 shadow-sm group-hover:border-gold group-hover:shadow-gold/20 transition-all duration-500 transform group-hover:rotate-6">
 									<ArtisanalIcon
-										name={section.icon}
-										size={32}
+										name={section.icon as any}
+										size={40}
 										weight="duotone"
 										ornate={true}
-										class="text-gold-dark group-hover:scale-110 transition-transform duration-500"
+										class="text-gold-dark"
 									/>
 								</div>
 
 								<div class="flex-grow">
-									<h4 class="text-3xl font-display font-bold text-deep-blue mb-4 leading-tight group-hover:text-gold-dark transition-colors">
+									<h4 class="text-3xl font-display font-bold text-deep-blue mb-6 leading-tight group-hover:text-gold-dark transition-colors">
 										{section.name}
 									</h4>
-									<p class="text-deep-blue/60 leading-relaxed font-body italic mb-8">
+									<p class="text-deep-blue/60 leading-relaxed font-body italic mb-10 text-lg">
 										{section.desc}
 									</p>
 								</div>
 
-								<div class="flex items-center justify-between pt-6 border-t border-gold/10">
-									<div class="flex items-center text-gold-dark font-bold text-xs uppercase tracking-widest">
+								<div class="flex items-center justify-between pt-8 border-t border-gold/10">
+									<div class="flex items-center text-gold-dark font-bold text-xs uppercase tracking-[0.2em]">
 										<span>Descubrir</span>
-										<ChevronRight
+										<ArtisanalIcon
+											name="arrow-right"
 											size={16}
-											class="ml-2 transition-transform group-hover:translate-x-2"
+											class="ml-3 transition-transform group-hover:translate-x-3"
 										/>
 									</div>
 									<ArtisanalIcon
-										name="cross"
-										size={18}
-										class="text-gold/20 group-hover:text-gold/50 transition-colors opacity-0 group-hover:opacity-100"
+										name="star"
+										size={20}
+										class="text-gold/20 group-hover:text-gold/50 transition-colors opacity-0 group-hover:opacity-100 group-hover:rotate-45"
 									/>
 								</div>
 							</div>
@@ -206,7 +290,7 @@ const featuredSections = [
 	</section>
 
 	<!-- parish life section -->
-	<section class="py-32 bg-parchment relative overflow-hidden">
+	<section class="py-40 bg-parchment relative overflow-hidden">
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 			<SectionHeader
 				tag="Nuestra Familia"
@@ -214,76 +298,108 @@ const featuredSections = [
 				subtitle="Conozca a quienes sirven en nuestra comunidad y los grupos donde tú también puedes participar."
 			/>
 
-			<div class="grid grid-cols-1 md:grid-cols-2 gap-12 pt-10">
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 pt-20">
 				<!-- priests -->
 				<div
-					class="p-10 bg-gold/5 rounded-[3rem] border border-gold/20 flex flex-col md:flex-row items-center gap-8"
+					class="group p-12 bg-white/50 backdrop-blur-xl rounded-[3.5rem] sacred-border flex flex-col md:flex-row items-center gap-10 hover:bg-white/80 transition-all duration-500 shadow-xl"
 				>
 					<div
-						class="w-32 h-32 rounded-full border-4 border-gold overflow-hidden shrink-0 shadow-xl"
+						class="w-40 h-40 rounded-[2.5rem] border-4 border-gold shadow-2xl overflow-hidden shrink-0 group-hover:scale-105 transition-transform duration-700"
 					>
-						<img
+						<Image
 							src="https://images.unsplash.com/photo-1544427920-c49ccfb85579?q=80&w=400"
-							alt="Sacerdote"
-							class="w-full h-full object-cover"
+							alt="Pbro. Juan Bautista"
+							width={400}
+							height={400}
+							class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
 						/>
 					</div>
-					<div>
+					<div class="text-center md:text-left">
+						<div
+							class="inline-block px-4 py-1 bg-gold/10 rounded-full mb-4"
+						>
+							<span
+								class="text-gold-dark font-bold text-[10px] uppercase tracking-widest"
+								>Cura Párroco</span
+							>
+						</div>
 						<h3
-							class="text-2xl font-display font-bold text-deep-blue mb-2"
+							class="text-3xl font-display font-bold text-deep-blue mb-4"
 						>
 							Pbro. Juan Bautista
 						</h3>
 						<p
-							class="text-gold-dark font-bold text-xs uppercase tracking-widest mb-4"
+							class="text-deep-blue/70 text-lg leading-relaxed italic relative"
 						>
-							Cura Párroco
-						</p>
-						<p
-							class="text-deep-blue/70 text-sm leading-relaxed italic"
-						>
-							"El Señor es mi pastor, nada me falta. Guiando a
-							esta comunidad con alegría y esperanza."
+							<ArtisanalIcon
+								name="quotes"
+								size={32}
+								class="absolute -top-4 -left-6 opacity-10 text-gold"
+							/>
+							"Guiando a esta comunidad con alegría y esperanza, caminando
+							juntos hacia la luz del Señor."
 						</p>
 					</div>
 				</div>
 
 				<!-- groups -->
 				<div
-					class="p-10 bg-deep-blue text-parchment rounded-[3rem] shadow-2xl relative overflow-hidden group"
+					class="p-12 bg-deep-blue text-parchment rounded-[3.5rem] shadow-glass relative overflow-hidden group hover:shadow-2xl transition-all duration-700"
 				>
 					<div
-						class="absolute -top-10 -right-10 opacity-10 group-hover:scale-110 transition-transform duration-700"
+						class="absolute -top-20 -right-20 opacity-[0.05] group-hover:scale-110 transition-transform duration-1000 group-hover:rotate-12"
 					>
-						<ArtisanalIcon name="users-three" size={200} />
+						<ArtisanalIcon name="users-three" size={400} />
 					</div>
 					<div class="relative z-10">
-						<h3
-							class="text-2xl font-display font-bold text-gold mb-6"
+						<div class="flex items-center space-x-4 mb-10">
+							<div
+								class="w-12 h-12 rounded-xl bg-gold/20 flex items-center justify-center text-gold"
+							>
+								<ArtisanalIcon name="users-three" size={24} />
+							</div>
+							<h3
+								class="text-3xl font-display font-bold text-gold"
+							>
+								Grupos Parroquiales
+							</h3>
+						</div>
+						<div
+							class="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-12"
 						>
-							Grupos y Movimientos
-						</h3>
-						<ul class="grid grid-cols-2 gap-4">
 							{
-								[
-									"Catequesis",
-									"Pastoral Juvenil",
-									"Coro Parroquial",
-									"Lectores",
-									"Ministros Extraordinarios",
-									"Pastoral Social",
-								].map((group) => (
-									<li class="flex items-center space-x-2 text-sm text-parchment/80">
-										<ArtisanalIcon
-											name="caret-right"
-											size={12}
-											class="text-gold"
-										/>
-										<span>{group}</span>
+								(
+									[
+										"Catequesis de Niños",
+										"Pastoral Juvenil",
+										"Coro Resurrección",
+										"Lectores del Verbo",
+										"Ministros Extraordinarios",
+										"Cáritas Parroquial",
+									] as any[]
+								).map((group) => (
+									<li class="flex items-center space-x-4 text-parchment/80 group/item cursor-default">
+										<div class="w-1.5 h-1.5 rounded-full bg-gold transition-all group-hover/item:scale-150" />
+										<span class="font-medium group-hover/item:text-gold transition-colors">
+											{group}
+										</span>
 									</li>
 								))
 							}
-						</ul>
+						</div>
+						<div class="mt-12 pt-8 border-t border-parchment/10">
+							<a
+								href="/comunidad"
+								class="inline-flex items-center text-gold font-bold text-sm uppercase tracking-widest hover:translate-x-2 transition-transform"
+							>
+								<span>Ver todos los grupos</span>
+								<ArtisanalIcon
+									name="arrow-right"
+									size={16}
+									class="ml-3"
+								/>
+							</a>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -291,22 +407,71 @@ const featuredSections = [
 	</section>
 
 	<!-- verse section -->
-	<section class="py-40 bg-deep-blue text-center relative">
+	<section class="py-52 bg-deep-blue text-center relative overflow-hidden">
 		<div
-			class="absolute inset-0 opacity-5 pointer-events-none flex items-center justify-center"
+			class="absolute inset-0 opacity-[0.03] pointer-events-none flex items-center justify-center"
 		>
-			<ArtisanalIcon name="cross" size={400} />
+			<ArtisanalIcon name="cross" size={600} />
 		</div>
-		<div class="max-w-4xl mx-auto px-4 relative z-10">
+		<div class="max-w-5xl mx-auto px-4 relative z-10">
+			<ArtisanalIcon
+				name="sparkle"
+				size={14}
+				class="text-gold"
+				weight="bold"
+			/>
+			<ArtisanalIcon
+				name="cross"
+				size={48}
+				class="text-gold/30 mx-auto mb-16"
+			/>
 			<blockquote
-				class="text-4xl md:text-5xl font-display font-italic text-parchment mb-12 opacity-90 italic leading-snug"
+				class="text-4xl md:text-6xl font-display font-italic text-parchment mb-16 opacity-95 italic leading-snug tracking-tight"
 			>
 				"Donde dos o tres se reúnen en mi nombre, allí estoy yo en medio
 				de ellos."
 			</blockquote>
-			<cite class="text-gold uppercase tracking-[0.3em] font-bold text-sm"
-				>— Mateo 18:20</cite
-			>
+			<div class="flex items-center justify-center space-x-6">
+				<div class="w-12 h-px bg-gold/30"></div>
+				<cite
+					class="text-gold uppercase tracking-[0.4em] font-bold text-sm"
+					>Mateo 18:20</cite
+				>
+				<div class="w-12 h-px bg-gold/30"></div>
+			</div>
 		</div>
 	</section>
 </Layout>
+
+<style>
+	.gold-gradient {
+		background: linear-gradient(
+			to right,
+			#d4af37,
+			#fcf6ba,
+			#d4af37,
+			#fcf6ba,
+			#d4af37
+		);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-size: 200% auto;
+		animation: shine 4s linear infinite;
+	}
+
+	@keyframes shine {
+		to {
+			background-position: 200% center;
+		}
+	}
+
+	.shadow-glass {
+		box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+	}
+
+	.shadow-glass-hover {
+		box-shadow:
+			0 20px 60px 0 rgba(0, 0, 0, 0.2),
+			0 0 40px 0 rgba(212, 175, 55, 0.1);
+	}
+</style>

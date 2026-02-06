@@ -5,6 +5,7 @@ interface Props {
     class?: string;
     weight?: "thin" | "light" | "regular" | "bold" | "fill" | "duotone";
     ornate?: boolean;
+    "aria-label"?: string;
 }
 
 const {
@@ -13,28 +14,72 @@ const {
     class: className = "",
     weight = "regular",
     ornate = false,
+    "aria-label": ariaLabel,
 } = Astro.props;
 
-// This component will use Phosphor icons.
-// Since we installed @phosphor-icons/core, we can use the web component or just render the SVG.
-// For Astro, using the SVG approach is more performant.
+// Map weights to Iconify Phosphor suffixes
+const weightMap = {
+    regular: "",
+    thin: "-thin",
+    light: "-light",
+    bold: "-bold",
+    fill: "-fill",
+    duotone: "-duotone",
+};
+
+const iconName = `${name}${weightMap[weight] || ""}`;
+const iconUrl = `https://api.iconify.design/ph:${iconName}.svg`;
+
+let svgContent = "";
+try {
+    const response = await fetch(iconUrl);
+    if (response.ok) {
+        svgContent = await response.text();
+
+        // Basic cleanup and adding accessibility
+        svgContent = svgContent
+            .replace(/width=".*?"/, `width="${size}"`)
+            .replace(/height=".*?"/, `height="${size}"`)
+            .replace(
+                "<svg",
+                `<svg aria-hidden="${!ariaLabel}" ${ariaLabel ? `aria-label="${ariaLabel}"` : ""} role="img"`,
+            );
+    } else {
+        console.error(`Failed to fetch icon: ${iconName}`);
+    }
+} catch (e) {
+    console.error(`Error fetching icon ${iconName}:`, e);
+}
 ---
 
-<div class={`relative inline-flex items-center justify-center ${className}`}>
+<div
+    class={`relative inline-flex items-center justify-center shrink-0 ${className}`}
+>
     {
         ornate && (
-            <div class="absolute inset-[-8px] border border-gold/20 rounded-lg rotate-45 pointer-events-none transition-transform group-hover:rotate-90 duration-700" />
-        )
-    }
-    {
-        ornate && (
-            <div class="absolute inset-[-4px] border border-gold/10 rounded-sm -rotate-12 pointer-events-none transition-transform group-hover:rotate-0 duration-500" />
+            <>
+                <div class="absolute inset-[-20%] border border-gold/20 rounded-lg rotate-45 pointer-events-none transition-transform group-hover:rotate-90 duration-1000" />
+                <div class="absolute inset-[-10%] border border-gold/10 rounded-sm -rotate-12 pointer-events-none transition-transform group-hover:rotate-0 duration-700" />
+                <div class="absolute inset-0 bg-gold/5 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-full" />
+            </>
         )
     }
 
-    <i class={`ph-${name} ph-${weight}`} style={`font-size: ${size}px;`}></i>
+    <Fragment
+        set:html={svgContent ||
+            `<span class="text-[10px] text-red-500">?${name}</span>`}
+    />
 </div>
 
-<style>
-    /* We import the Phosphor icons stylesheet here or in the layout */
+<style is:global>
+    /* Styling for the fetched SVGs */
+    .ph-icon svg {
+        display: block;
+        color: currentColor;
+    }
+
+    /* Ensure duotone opacity is preserved if present */
+    [fill-opacity] {
+        opacity: var(--ph-duotone-opacity, 0.2);
+    }
 </style>

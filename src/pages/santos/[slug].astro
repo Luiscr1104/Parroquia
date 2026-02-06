@@ -1,0 +1,113 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ArtisanalIcon from "../../components/ArtisanalIcon.astro";
+import { santos } from "../../data/santos";
+import { Image } from "astro:assets";
+
+export function getStaticPaths() {
+    return (santos as any[]).map((santo) => ({
+        params: { slug: santo.slug },
+        props: { santo },
+    }));
+}
+
+const { santo } = Astro.props;
+---
+
+<Layout
+    title={`${santo.title} | Parroquia San Isidro`}
+    description={santo.description}
+>
+    <!-- dynamic hero -->
+    <section
+        class="relative min-h-[70vh] flex items-center justify-center overflow-hidden"
+    >
+        <div class="absolute inset-0 z-0">
+            <Image
+                src={santo.image as any}
+                alt={santo.title}
+                width={1920}
+                height={1080}
+                quality="high"
+                class="w-full h-full object-cover object-top"
+            />
+            <div
+                class="absolute inset-0 bg-gradient-to-b from-deep-blue/40 via-deep-blue/80 to-parchment"
+            >
+            </div>
+        </div>
+
+        <div
+            class="relative z-10 max-w-5xl mx-auto px-4 text-center animate-sacred-in"
+        >
+            <div
+                class="inline-flex items-center space-x-2 bg-gold/20 backdrop-blur-md border border-gold/30 px-4 py-1 rounded-full mb-8"
+            >
+                <ArtisanalIcon name="star" size={14} class="text-gold" />
+                <span
+                    class="text-[10px] font-bold uppercase tracking-[0.2em] text-gold-light"
+                    >Nuestros Intercesores</span
+                >
+            </div>
+            <h1
+                class="text-6xl md:text-9xl font-display font-bold text-parchment leading-[0.9] tracking-tighter mb-8 shadow-text"
+            >
+                {santo.title}
+            </h1>
+        </div>
+    </section>
+
+    <!-- biography section -->
+    <section class="py-32 bg-parchment relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-4 relative z-10">
+            <div class="flex justify-center mb-16">
+                <div
+                    class="w-16 h-1 px-1 bg-gradient-to-r from-transparent via-gold to-transparent"
+                >
+                </div>
+            </div>
+
+            <div class="prose prose-xl prose-stone mx-auto">
+                <p
+                    class="text-3xl font-display italic text-deep-blue/90 mb-12 leading-relaxed text-center"
+                >
+                    "{santo.description}"
+                </p>
+                <div
+                    class="text-xl text-deep-blue/80 leading-relaxed font-body space-y-8 first-letter:text-7xl first-letter:font-display first-letter:text-gold first-letter:mr-3 first-letter:float-left"
+                >
+                    {santo.fullBiography}
+                </div>
+            </div>
+
+            <div
+                class="mt-24 pt-16 border-t border-gold/10 flex flex-col items-center"
+            >
+                <a
+                    href="/filiales"
+                    class="group flex items-center space-x-4 px-8 py-4 bg-deep-blue text-parchment rounded-full hover:bg-deep-blue/90 transition-all shadow-xl hover:scale-105"
+                >
+                    <ArtisanalIcon
+                        name="arrow-left"
+                        size={18}
+                        class="group-hover:-translate-x-2 transition-transform"
+                    />
+                    <span class="font-bold">Volver a los Santos</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- decorative elements -->
+        <div
+            class="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/2 opacity-5 pointer-events-none"
+        >
+            <ArtisanalIcon name="cross" size={600} />
+        </div>
+    </section>
+</Layout>
+
+<style>
+    .shadow-text {
+        text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+</style>

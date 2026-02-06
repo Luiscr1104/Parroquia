@@ -40,43 +40,60 @@ const dogmas = [
 ---
 
 <Layout
-    title="Dogmas Marianos"
+    title="Dogmas Marianos | Verdades de Fe"
     description="Conoce las cuatro verdades de fe sobre la Virgen María."
 >
-    <section class="py-24 bg-parchment overflow-hidden">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <SectionHeader
-                tag="Verdades de Fe"
-                title="Dogmas Marianos"
-                subtitle="Los dogmas son verdades divinamente reveladas que la Iglesia nos propone creer como artículos de fe."
-            />
+    <section class="py-32 bg-parchment relative overflow-hidden">
+        <!-- background ornaments -->
+        <div
+            class="absolute top-1/4 left-1/2 -translate-x-1/2 opacity-[0.02] pointer-events-none"
+        >
+            <ArtisanalIcon name="cross" size={800} />
+        </div>
 
-            <div class="space-y-12">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="mb-24 animate-sacred-in">
+                <SectionHeader
+                    tag="Verdades de Fe"
+                    title="Dogmas Marianos"
+                    subtitle="Los dogmas son verdades divinamente reveladas que la Iglesia nos propone creer como artículos de fe."
+                />
+            </div>
+
+            <div class="space-y-16">
                 {
-                    dogmas.map((dogma, index) => (
+                    (dogmas as any[]).map((dogma, index) => (
                         <div
-                            class={`flex flex-col md:flex-row items-center gap-8 p-10 rounded-3xl sacred-border bg-parchment shadow-sm transition-all duration-500 hover:shadow-xl ${index % 2 !== 0 ? "md:flex-row-reverse" : ""}`}
+                            class={`flex flex-col md:flex-row items-center gap-12 p-12 rounded-[4rem] glass-card transition-all duration-700 hover:shadow-glass-hover group animate-sacred-in ${index % 2 !== 0 ? "md:flex-row-reverse" : ""}`}
+                            style={`animation-delay: ${index * 0.15}s`}
                         >
                             <div
-                                class={`w-20 h-20 rounded-2xl flex items-center justify-center shrink-0 ${dogma.color}`}
+                                class={`w-32 h-32 rounded-[2rem] flex items-center justify-center shrink-0 shadow-inner group-hover:scale-110 group-hover:rotate-6 transition-all duration-700 ${dogma.color}`}
                             >
                                 <ArtisanalIcon
                                     name={dogma.icon}
-                                    size={40}
+                                    size={56}
                                     weight="duotone"
                                     ornate={true}
                                 />
                             </div>
-                            <div class="text-center md:text-left">
-                                <span class="text-xs uppercase tracking-[0.2em] font-bold text-gold-dark/60 mb-2 block">
+                            <div class="text-center md:text-left flex-grow">
+                                <span class="text-[10px] uppercase tracking-[0.3em] font-bold text-gold-dark/60 mb-4 block">
                                     {dogma.latin}
                                 </span>
-                                <h3 class="text-3xl font-display font-bold text-deep-blue mb-4">
+                                <h3 class="text-4xl font-display font-bold text-deep-blue mb-6 group-hover:text-gold-dark transition-colors">
                                     {dogma.title}
                                 </h3>
-                                <p class="text-deep-blue/70 leading-relaxed text-lg italic">
-                                    "{dogma.description}"
-                                </p>
+                                <div class="relative">
+                                    <ArtisanalIcon
+                                        name="quotes"
+                                        size={48}
+                                        class="absolute -top-6 -left-8 opacity-5 text-gold"
+                                    />
+                                    <p class="text-xl text-deep-blue/70 leading-relaxed italic font-body">
+                                        "{dogma.description}"
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     ))
@@ -85,3 +102,11 @@ const dogmas = [
         </div>
     </section>
 </Layout>
+
+<style>
+    .shadow-glass-hover {
+        box-shadow:
+            0 20px 60px 0 rgba(0, 0, 0, 0.1),
+            0 0 40px 0 rgba(212, 175, 55, 0.05);
+    }
+</style>
