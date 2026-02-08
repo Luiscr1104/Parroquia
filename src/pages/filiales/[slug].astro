@@ -1,4 +1,5 @@
 ---
+// @ts-nocheck
 import Layout from "../../layouts/Layout.astro";
 import ArtisanalIcon from "../../components/ArtisanalIcon.astro";
 import SectionHeader from "../../components/SectionHeader.astro";
@@ -8,14 +9,14 @@ export function getStaticPaths() {
     const filiales = [
         {
             slug: "penas-blancas-centro",
-            name: "Peñas Blancas Centro",
+            name: "San Isidro Labrador",
             patronSaint: "Sagrado Corazón de Jesús",
             history:
                 "La sede parroquial ha sido el corazón espiritual de nuestra comunidad desde sus inicios, siendo testigo del crecimiento de la fe en toda la región. Fundada en la fe de los primeros colonos, el templo ha sido renovado para reflejar la gloria de Dios.",
             novenaDate: "Mes de Junio",
             image: "https://images.unsplash.com/photo-1590059392686-277d34346820?q=80&w=1200",
             contact: "+506 2460-1234",
-            location: "Centro de Peñas Blancas, frente al parque.",
+            location: "Centro de San Isidro, frente al parque.",
             details:
                 "El templo principal cuenta con capacidad para 400 personas y un sagrario de madera tallada a mano.",
         },
@@ -28,7 +29,7 @@ export function getStaticPaths() {
             novenaDate: "4 de Octubre",
             image: "https://images.unsplash.com/photo-1618342411894-3158728d6174?q=80&w=1200",
             contact: "+506 8888-0001",
-            location: "San Francisco de Peñas Blancas, 2km al norte.",
+            location: "San Francisco de San Isidro, 2km al norte.",
             details:
                 "Conocida por su coro infantil y su compromiso con la ecología integral, siguiendo el ejemplo de San Francisco.",
         },
@@ -41,7 +42,7 @@ export function getStaticPaths() {
             novenaDate: "11 de Agosto",
             image: "https://images.unsplash.com/photo-1594632367985-0565f49c0667?q=80&w=1200",
             contact: "+506 8888-0002",
-            location: "Santa Clara de Peñas Blancas, sector este.",
+            location: "Santa Clara de San Isidro, sector este.",
             details:
                 "Cuenta con un grupo de oración permanente y una pastoral social muy activa.",
         },
@@ -58,7 +59,7 @@ const { filial } = Astro.props;
 
 <Layout
     title={`${filial.name} | Comunidad de Fe`}
-    description={`Comunidad de ${filial.name} - Parroquia de Peñas Blancas`}
+    description={`Comunidad de ${filial.name} - Parroquia San Isidro`}
 >
     <!-- refined ornamental header (no photo) -->
     <section

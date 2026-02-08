@@ -11,7 +11,7 @@ interface Props {
     description?: string;
 }
 
-const { title, description = "Parroquia de Peñas Blancas - Comunidad de Fe" } =
+const { title, description = "Parroquia San Isidro - Comunidad de Fe" } =
     Astro.props;
 ---
 
@@ -38,7 +38,7 @@ const { title, description = "Parroquia de Peñas Blancas - Comunidad de Fe" } =
         <meta property="twitter:description" content={description} />
         <meta property="twitter:image" content="/images/hero-bg.jpg" />
 
-        <title>{title} | Parroquia de Peñas Blancas</title>
+        <title>{title} | Parroquia San Isidro</title>
     </head>
     <body class="selection:bg-gold/30 flex flex-col min-h-screen bg-parchment">
         <Navbar />

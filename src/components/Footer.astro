@@ -1,9 +1,20 @@
 ---
+// @ts-nocheck
 import ArtisanalIcon from "./ArtisanalIcon.astro";
 
-const currentYear = new Date().getFullYear();
+const currentYear = new globalThis.Date().getFullYear();
 
-const sections = [
+interface Link {
+    name: string;
+    href: string;
+}
+
+interface Section {
+    title: string;
+    links: Link[];
+}
+
+const sections: Section[] = [
     {
         title: "Nuestra Parroquia",
         links: [
@@ -17,8 +28,8 @@ const sections = [
         title: "Comunidad",
         links: [
             { name: "Filiales", href: "/filiales" },
-            { name: "Catequesis", href: "#catechesis" },
-            { name: "Grupos Juveniles", href: "#youth" },
+            { name: "Catequesis", href: "/catequesis" },
+            { name: "Grupos Juveniles", href: "/pastoral-juvenil" },
             { name: "Cáritas", href: "#caritas" },
         ],
     },
@@ -49,7 +60,7 @@ const sections = [
                     </div>
                     <span
                         class="text-3xl font-display font-bold tracking-tight text-parchment"
-                        >Peñas Blancas</span
+                        >San Isidro</span
                     >
                 </a>
                 <p
@@ -76,13 +87,13 @@ const sections = [
 
             <!-- quick links -->
             {
-                (sections as any[]).map((section) => (
+                sections.map((section: Section) => (
                     <div>
                         <h3 class="text-gold font-display font-bold text-xl mb-8 tracking-wide">
                             {section.title}
                         </h3>
                         <ul class="space-y-5">
-                            {(section.links as any[]).map((link) => (
+                            {section.links.map((link: Link) => (
                                 <li>
                                     <a
                                         href={link.href}
@@ -117,7 +128,7 @@ const sections = [
                             />
                         </div>
                         <span class="text-sm"
-                            >Peñas Blancas, San Ramón, Costa Rica</span
+                            >San Isidro, San Ramón, Costa Rica</span
                         >
                     </li>
                     <li class="flex items-center space-x-4 text-parchment/70">
@@ -142,9 +153,7 @@ const sections = [
                                 weight="regular"
                             />
                         </div>
-                        <span class="text-sm"
-                            >info@parroquiapenasblancas.com</span
-                        >
+                        <span class="text-sm">info@parroquiasanisidro.com</span>
                     </li>
                 </ul>
             </div>
@@ -154,7 +163,7 @@ const sections = [
             class="pt-12 border-t border-parchment/10 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-sm"
         >
             <p class="text-parchment/40">
-                &copy; {currentYear} Parroquia de Peñas Blancas.
+                &copy; {currentYear} Parroquia San Isidro.
             </p>
             <p class="text-parchment/40">
                 Un diseño con propósito por

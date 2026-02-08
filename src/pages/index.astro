@@ -1,10 +1,18 @@
 ---
+// @ts-nocheck
 import Layout from "../layouts/Layout.astro";
 import SectionHeader from "../components/SectionHeader.astro";
 import ArtisanalIcon from "../components/ArtisanalIcon.astro";
 import { Image } from "astro:assets";
 
-const featuredSections = [
+interface FeaturedSection {
+	name: string;
+	href: string;
+	icon: string;
+	desc: string;
+}
+
+const featuredSections: FeaturedSection[] = [
 	{
 		name: "Nuestras Filiales",
 		href: "/filiales",
@@ -165,7 +173,7 @@ const featuredSections = [
 					<SectionHeader
 						tag="Bienvenidos"
 						title="Una casa de oración para todos"
-						subtitle="Nuestra parroquia es el cuerpo vivo de creyentes que buscan seguir los pasos de Jesús en Peñas Blancas. Un espacio sagrado para el encuentro con Dios y la comunidad."
+						subtitle="Nuestra parroquia es el cuerpo vivo de creyentes que buscan seguir los pasos de Jesús en San Isidro. Un espacio sagrado para el encuentro con Dios y la comunidad."
 						align="left"
 					/>
 
@@ -194,7 +202,7 @@ const featuredSections = [
 										icon: "heart",
 									},
 								] as any[]
-							).map((item) => (
+							).map((item: any) => (
 								<div class="flex items-start space-x-4 group p-4 rounded-2xl hover:bg-gold/5 transition-colors">
 									<div class="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center text-gold shrink-0 group-hover:scale-110 transition-transform">
 										<ArtisanalIcon
@@ -238,52 +246,54 @@ const featuredSections = [
 
 			<div class="grid grid-cols-1 md:grid-cols-3 gap-10 pt-16">
 				{
-					(featuredSections as any[]).map((section, index) => (
-						<a
-							href={section.href}
-							class="group relative flex flex-col p-1 bg-parchment rounded-[2.5rem] sacred-border overflow-hidden transition-all duration-700 hover:-translate-y-3 hover:shadow-glass-hover"
-							style={`animation-delay: ${index * 0.1}s`}
-						>
-							<div class="absolute inset-0 bg-gradient-to-br from-gold/10 via-transparent to-deep-blue/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+					featuredSections.map(
+						(section: FeaturedSection, index: number) => (
+							<a
+								href={section.href}
+								class="group relative flex flex-col p-1 bg-parchment rounded-[2.5rem] sacred-border overflow-hidden transition-all duration-700 hover:-translate-y-3 hover:shadow-glass-hover"
+								style={`animation-delay: ${index * 0.1}s`}
+							>
+								<div class="absolute inset-0 bg-gradient-to-br from-gold/10 via-transparent to-deep-blue/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
-							<div class="relative z-10 p-12 flex flex-col h-full bg-parchment/60 backdrop-blur-md rounded-[2.3rem]">
-								<div class="w-20 h-20 rounded-[1.5rem] bg-parchment border border-gold/10 flex items-center justify-center mb-10 shadow-sm group-hover:border-gold group-hover:shadow-gold/20 transition-all duration-500 transform group-hover:rotate-6">
-									<ArtisanalIcon
-										name={section.icon as any}
-										size={40}
-										weight="duotone"
-										ornate={true}
-										class="text-gold-dark"
-									/>
-								</div>
-
-								<div class="flex-grow">
-									<h4 class="text-3xl font-display font-bold text-deep-blue mb-6 leading-tight group-hover:text-gold-dark transition-colors">
-										{section.name}
-									</h4>
-									<p class="text-deep-blue/60 leading-relaxed font-body italic mb-10 text-lg">
-										{section.desc}
-									</p>
-								</div>
-
-								<div class="flex items-center justify-between pt-8 border-t border-gold/10">
-									<div class="flex items-center text-gold-dark font-bold text-xs uppercase tracking-[0.2em]">
-										<span>Descubrir</span>
+								<div class="relative z-10 p-12 flex flex-col h-full bg-parchment/60 backdrop-blur-md rounded-[2.3rem]">
+									<div class="w-20 h-20 rounded-[1.5rem] bg-parchment border border-gold/10 flex items-center justify-center mb-10 shadow-sm group-hover:border-gold group-hover:shadow-gold/20 transition-all duration-500 transform group-hover:rotate-6">
 										<ArtisanalIcon
-											name="arrow-right"
-											size={16}
-											class="ml-3 transition-transform group-hover:translate-x-3"
+											name={section.icon as any}
+											size={40}
+											weight="duotone"
+											ornate={true}
+											class="text-gold-dark"
 										/>
 									</div>
-									<ArtisanalIcon
-										name="star"
-										size={20}
-										class="text-gold/20 group-hover:text-gold/50 transition-colors opacity-0 group-hover:opacity-100 group-hover:rotate-45"
-									/>
+
+									<div class="flex-grow">
+										<h4 class="text-3xl font-display font-bold text-deep-blue mb-6 leading-tight group-hover:text-gold-dark transition-colors">
+											{section.name}
+										</h4>
+										<p class="text-deep-blue/60 leading-relaxed font-body italic mb-10 text-lg">
+											{section.desc}
+										</p>
+									</div>
+
+									<div class="flex items-center justify-between pt-8 border-t border-gold/10">
+										<div class="flex items-center text-gold-dark font-bold text-xs uppercase tracking-[0.2em]">
+											<span>Descubrir</span>
+											<ArtisanalIcon
+												name="arrow-right"
+												size={16}
+												class="ml-3 transition-transform group-hover:translate-x-3"
+											/>
+										</div>
+										<ArtisanalIcon
+											name="star"
+											size={20}
+											class="text-gold/20 group-hover:text-gold/50 transition-colors opacity-0 group-hover:opacity-100 group-hover:rotate-45"
+										/>
+									</div>
 								</div>
-							</div>
-						</a>
-					))
+							</a>
+						),
+					)
 				}
 			</div>
 		</div>

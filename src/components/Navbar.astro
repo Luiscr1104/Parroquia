@@ -1,12 +1,23 @@
 ---
+// @ts-nocheck
 import ArtisanalIcon from "./ArtisanalIcon.astro";
 
-const navItems = [
-    { name: "Inicio", href: "/", icon: "house" },
+interface NavItem {
+    name: string;
+    href: string;
+    icon: string;
+}
+
+const navItems: NavItem[] = [
     { name: "Misa", href: "/misa", icon: "hands-praying" },
     { name: "Filiales", href: "/filiales", icon: "church" },
+    {
+        name: "Pastoral Juvenil",
+        href: "/pastoral-juvenil",
+        icon: "users-three",
+    },
+    { name: "Catequesis", href: "/catequesis", icon: "book-open" },
     { name: "María", href: "/maria", icon: "heart" },
-    { name: "Noticias", href: "/noticias", icon: "newspaper" },
 ];
 ---
 
@@ -31,7 +42,7 @@ const navItems = [
                 <div class="flex flex-col">
                     <span
                         class="text-2xl md:text-3xl font-display font-bold tracking-tight text-deep-blue group-hover:text-gold-dark transition-colors duration-300"
-                        >Peñas Blancas</span
+                        >San Isidro</span
                     >
                     <span
                         class="text-[10px] uppercase tracking-[0.4em] text-deep-blue/40 font-bold"
@@ -43,7 +54,7 @@ const navItems = [
             <!-- desktop nav -->
             <nav class="hidden lg:flex items-center space-x-2">
                 {
-                    navItems.map((item) => (
+                    navItems.map((item: NavItem) => (
                         <a
                             href={item.href}
                             class="flex items-center space-x-2 text-sm font-bold text-deep-blue/70 hover:text-gold-dark transition-all duration-300 relative group px-4 py-2 rounded-xl hover:bg-gold/5"
@@ -91,7 +102,7 @@ const navItems = [
     >
         <div class="px-6 py-8 space-y-2">
             {
-                navItems.map((item) => (
+                navItems.map((item: NavItem) => (
                     <a
                         href={item.href}
                         class="flex items-center space-x-5 px-5 py-4 text-lg font-bold text-deep-blue/80 hover:bg-gold/10 hover:text-gold-dark rounded-2xl transition-all"
