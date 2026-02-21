@@ -104,9 +104,18 @@ export const santos: Santo[] = [
 	{
 		slug: "cristo-de-esquipulas",
 		title: "Cristo de Esquipulas",
-		image: "/images/santos/SANTO CRISTO ESQUIPULAS.webp",
+		image: "/images/santos/Cristo Esquipulas.webp",
 		description:
 			"El 'Cristo Negro', símbolo de fe y unidad en Centroamérica. Su imagen en la Basílica de Esquipulas es un faro de esperanza y milagros para miles.",
 		fullBiography: "El Santo Cristo de Esquipulas es una imagen de Jesús Crucificado que se venera en la ciudad de Esquipulas, Guatemala. Tallado en madera oscura en el siglo XVI, es conocido como el 'Señor de Esquipulas' o 'Cristo Negro'. Su fama de milagroso se extendió rápidamente por toda Centroamérica, convirtiendo su santuario en uno de los centros de peregrinación más importantes del continente. Representa la unidad de los pueblos bajo la cruz de Cristo.",
+	},
+	{
+		slug: "virgen-de-lourdes",
+		title: "Virgen de Lourdes",
+		image: "/images/santos/VIRGEN DE LOURDES.webp",
+		description:
+			"Patrona de La Altura. Su devoción se originó tras las apariciones a Santa Bernardita en Lourdes, Francia, siendo símbolo de sanación y esperanza.",
+		fullBiography: "La advocación de Nuestra Señora de Lourdes tiene su origen en una serie de apariciones marianas ocurridas en el año 1858, en la pequeña localidad de Lourdes, al sur de Francia. Estas apariciones tuvieron como destinataria a Santa Bernardita Soubirous, una joven humilde, de apenas catorce años. El 11 de febrero de 1858 tuvo la primera visión de una 'Señora' vestida de blanco, con una banda azul en la cintura y un rosario entre las manos. A lo largo de ese año, Bernardita experimentó un total de 18 apariciones. Durante las apariciones, la Virgen insistió en la oración, la penitencia y la conversión del corazón. Uno de los signos más significativos fue el descubrimiento de una fuente de agua en la gruta, que se convirtió en signo de sanación. El momento central ocurrió el 25 de marzo de 1858, cuando la Señora reveló su identidad diciendo: 'Yo soy la Inmaculada Concepción'. El 18 de enero de 1862, la Iglesia declaró auténticas las apariciones. La fiesta de Nuestra Señora de Lourdes se celebra el 11 de febrero, y la Iglesia la ha asociado también a la Jornada Mundial del Enfermo.",
+		class: "bento-wide",
 	},
 ];
